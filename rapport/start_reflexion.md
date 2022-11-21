@@ -10,6 +10,7 @@
 
 - 0 = 0/1
 - inf = 1/0
+- PI -> constexpr $103993 \over 33102$
 
 ### Opérations
 - Somme : $a \over b$ $+$ $c \over d$ $=$ $ad+bc \over bd$ 
@@ -41,9 +42,6 @@
 
 ### Real to ratio
 Algo à rendre viable pour real < 0
-
-D’après vous, à qui s’adresse la puissance −1 de la ligne 8 ou
-bien la somme de la ligne 12 ?
 
 ### Other
 - Répondre aux questions du sujet dans le rapport

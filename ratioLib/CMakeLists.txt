@@ -12,7 +12,7 @@ find_package(Doxygen OPTIONAL_COMPONENTS QUIET)
 if(DOXYGEN_FOUND)
 	add_subdirectory(doc)
 else()
-	message(WARNING "Doxygen not found, skip dococumentation")
+	message(WARNING "Doxygen not found, skip documentation")
 endif()
 
 # Instructions to compile a library (no main() inside)
