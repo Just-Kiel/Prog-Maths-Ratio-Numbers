@@ -22,7 +22,7 @@ endif()
 add_library(Ratio ${source_files} ${header_files})
 
 # compilation flags
-target_compile_features(Ratio PRIVATE cxx_std_11) # use at least c++ 11
+target_compile_features(Ratio PRIVATE cxx_std_17) # use at least c++ 17 (for std::gcd)
 # target_compile_options(VectorD PRIVATE -Wall -O2)   # specify some compilation flags
 
 # include directory

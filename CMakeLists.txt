@@ -38,16 +38,15 @@ file(MAKE_DIRECTORY ${PROJECT_BINARY_DIR}/output)
 # (optaional) put the binary files in this directory
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/bin)
 
-
-# # add myCode1
-# message(STATUS "myCode1 cmake part ..." )
-# add_subdirectory(myCode1)
-
-# add myCode2
-#message(STATUS "myCode2 cmake part ..." )
-#add_subdirectory(myCode2)
-
 # add myLib
 message(STATUS "ratioLib cmake part ..." )
 add_subdirectory(ratioLib INTERFACE)
 include_directories(${CMAKE_SOURCE_DIR}/ratioLib/include) # important : other projects called by this cmake will know this include directory
+
+# add google test
+message(STATUS "google test cmake part ..." )
+add_subdirectory(googletest)
+
+# add unitTests
+message(STATUS "unitTests cmake part ..." )
+add_subdirectory(unitTests)
