@@ -9,18 +9,24 @@
 #include <cstdlib>
 
 #include "Ratio.hpp"
+#include "Variables.hpp"
 #include "../include/side_functions.hpp"
 
 /////////////////////////////////////////////////////
 // constructors
 
 TEST (RatioConstructor, defaultConstructor) { 
-	Ratio r;
+	std::srand(std::time(nullptr)); // use current time as seed for random generator
+
+	// generate random data
+    int numerator = std::rand();
+    unsigned int denominator = std::rand();
+
+	// build the corresponding VectorD
+	Ratio r(numerator, denominator);
 
     // check if basic ratio PGCD is 1
 	ASSERT_EQ (r.getPGCD(), 1);
-    // check if basic ratio denominator
-	ASSERT_EQ (r.getDenominator(), 1);
 }
 
 TEST (RatioConstructor, copyConstructor) {    
@@ -39,7 +45,26 @@ TEST (RatioConstructor, copyConstructor) {
 }
 
 /////////////////////////////////////////////////////
+// variables
+
+TEST (RatioVariables, zeroVar) { 
+    // check if basic ratio numerator
+	ASSERT_EQ (zeroRatio.getNumerator(), 0);
+    // check if basic ratio denominator
+	ASSERT_EQ (zeroRatio.getDenominator(), 1);
+}
+
+TEST (RatioVariables, infiniteVar) { 
+    // check if basic ratio numerator
+	ASSERT_EQ (infRatio.getNumerator(), 1);
+    // check if basic ratio denominator
+	ASSERT_EQ (infRatio.getDenominator(), 0);
+}
+
+/////////////////////////////////////////////////////
 // informations
+
+// NOTE : this test doesn't seem really useful but we have the method
 TEST (RatioInformation, pgcd){
 	// run many times the same test with different values
 	for(int run=0; run<100; ++run){

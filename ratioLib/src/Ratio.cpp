@@ -5,9 +5,15 @@
 #include <stdexcept>  // special exceptions
 #include <string>     // for exceptions
 
+Ratio::Ratio(const unsigned int denominator) : m_numerator(1), m_denominator(denominator){}
+
 Ratio::Ratio(const int numerator, const unsigned int denominator) : m_numerator(numerator), m_denominator(denominator) {
     if(denominator == 0)
         throw std::logic_error("Ratio::Ratio(numerator, denominator): invalid denominator, can't be 0");
+
+    const int pgcd = getPGCD();
+    if(pgcd != 1)
+        convertToIrreductible(pgcd);
 }
 
 Ratio::Ratio(const Ratio& r) : m_numerator(r.m_numerator), m_denominator(r.m_denominator) {}

@@ -1,3 +1,4 @@
+#pragma once
 #include <iostream>
 
 class Ratio
@@ -7,8 +8,9 @@ private:
     unsigned int m_denominator;
 
 public:
-    Ratio(const int numerator = 0, const unsigned int denominator = 1);
+    Ratio(const int numerator, const unsigned int denominator);
     Ratio(const Ratio& r);
+    Ratio(const unsigned int denominator = 0);
 
     inline unsigned int getDenominator() const {
 		return m_denominator;
