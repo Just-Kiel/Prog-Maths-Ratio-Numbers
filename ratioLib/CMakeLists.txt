@@ -36,3 +36,4 @@ install(TARGETS Ratio
         ARCHIVE DESTINATION /usr/local/lib)
 
 
+set(RATIO_LIB "${CMAKE_CURRENT_SOURCE_DIR}/include" PARENT_SCOPE)

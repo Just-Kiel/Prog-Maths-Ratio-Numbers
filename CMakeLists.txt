@@ -41,7 +41,9 @@ set(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/bin)
 # add myLib
 message(STATUS "ratioLib cmake part ..." )
 add_subdirectory(ratioLib INTERFACE)
-include_directories(${CMAKE_SOURCE_DIR}/ratioLib/include) # important : other projects called by this cmake will know this include directory
+# 2 ways of doing it (first one permit to change lib without impacting users)
+include_directories(${RATIO_LIB})
+# include_directories(${CMAKE_SOURCE_DIR}/ratioLib/include) # important : other projects called by this cmake will know this include directory
 
 # add google test
 message(STATUS "google test cmake part ..." )
