@@ -45,6 +45,10 @@ include_directories(${CMAKE_SOURCE_DIR}/ratioLib/include) # important : other pr
 
 # add google test
 message(STATUS "google test cmake part ..." )
+if (MSVC)
+  # For Windows: Prevent overriding the parent project's compiler/linker settings
+  set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+endif()
 add_subdirectory(googletest)
 
 # add unitTests
