@@ -4,39 +4,39 @@
 #include <vector>
 #include <string>
 #include <algorithm>
+#include <numeric>
 
 #include <ctime>
 #include <cstdlib>
 
 #include "Ratio.hpp"
-#include "Variables.hpp"
 #include "../include/side_functions.hpp"
 
 /////////////////////////////////////////////////////
 // constructors
 
 TEST (RatioConstructor, defaultConstructor) { 
-	std::srand(std::time(nullptr)); // use current time as seed for random generator
+	std::srand(unsigned int (std::time(nullptr))); // use current time as seed for random generator
 
 	// generate random data
     int numerator = std::rand();
     unsigned int denominator = std::rand();
 
-	// build the corresponding VectorD
+	// build the corresponding Ratio
 	Ratio r(numerator, denominator);
 
     // check if basic ratio PGCD is 1
-	ASSERT_EQ (r.getPGCD(), 1);
+	ASSERT_EQ (std::gcd(r.getNumerator(), r.getDenominator()), 1);
 }
 
 TEST (RatioConstructor, copyConstructor) {    
-    std::srand(std::time(nullptr)); // use current time as seed for random generator
+    std::srand(unsigned int (std::time(nullptr))); // use current time as seed for random generator
 
 	// generate random data
     int numerator = std::rand();
     unsigned int denominator = std::rand();
 
-	// build the corresponding VectorD
+	// build the corresponding Ratio
 	Ratio r(numerator, denominator);
 
     Ratio rCopy(r);
@@ -47,46 +47,22 @@ TEST (RatioConstructor, copyConstructor) {
 /////////////////////////////////////////////////////
 // variables
 
-TEST (RatioVariables, zeroVar) { 
-    // check if basic ratio numerator
-	ASSERT_EQ (zeroRatio.getNumerator(), 0);
-    // check if basic ratio denominator
-	ASSERT_EQ (zeroRatio.getDenominator(), 1);
-}
-
 TEST (RatioVariables, infiniteVar) { 
+	Ratio inf = Ratio::infinity();
     // check if basic ratio numerator
-	ASSERT_EQ (infRatio.getNumerator(), 1);
+	ASSERT_EQ (inf.getNumerator(), 1);
     // check if basic ratio denominator
-	ASSERT_EQ (infRatio.getDenominator(), 0);
+	ASSERT_EQ (inf.getDenominator(), 0);
 }
 
 /////////////////////////////////////////////////////
 // informations
 
-// NOTE : this test doesn't seem really useful but we have the method
-TEST (RatioInformation, pgcd){
-	// run many times the same test with different values
-	for(int run=0; run<100; ++run){
-
-		std::srand(std::time(nullptr)); // use current time as seed for random generator
-
-        // generate random data
-        int numerator = std::rand();
-        unsigned int denominator = std::rand();
-
-		// build the corresponding Ratio
-		Ratio r(numerator, denominator);
-
-		ASSERT_EQ (r.getPGCD(), gcd(r.getNumerator(),r.getDenominator()));
-	}
-}
-
 TEST (RatioInformation, irreductible){
 	// run many times the same test with different values
 	for(int run=0; run<100; ++run){
 
-		std::srand(std::time(nullptr)); // use current time as seed for random generator
+		std::srand(unsigned int (std::time(nullptr))); // use current time as seed for random generator
 
         // generate random data
         int numerator = std::rand();
@@ -95,13 +71,13 @@ TEST (RatioInformation, irreductible){
 		// build the corresponding Ratio
 		Ratio r(numerator, denominator);
 
-        int pgcd = r.getPGCD();
+        int pgcd = std::gcd(r.getNumerator(), r.getDenominator());
 
         if(pgcd =! 1){
             r.convertToIrreductible(pgcd);
         }
 
-		ASSERT_EQ (r.getPGCD(), 1);
+		ASSERT_EQ (std::gcd(r.getNumerator(), r.getDenominator()), 1);
 	}
 }
 

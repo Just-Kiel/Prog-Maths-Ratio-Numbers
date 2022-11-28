@@ -4,7 +4,7 @@ enable_testing()
 
 add_executable(myUnitTests src/sample_test.cpp src/side_functions.cpp)
 target_link_libraries(myUnitTests gtest Ratio)
-target_compile_features(myUnitTests PRIVATE cxx_std_14)
+target_compile_features(myUnitTests PRIVATE cxx_std_17)
 
 add_test(NAME myUnitTests
     COMMAND myUnitTests)
