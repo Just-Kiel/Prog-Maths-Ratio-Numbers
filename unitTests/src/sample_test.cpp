@@ -10,7 +10,6 @@
 #include <cstdlib>
 
 #include "Ratio.hpp"
-#include "../include/side_functions.hpp"
 
 /////////////////////////////////////////////////////
 // constructors
