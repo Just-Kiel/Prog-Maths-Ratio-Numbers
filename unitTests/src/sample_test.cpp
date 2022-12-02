@@ -15,7 +15,7 @@
 // constructors
 
 TEST (RatioConstructor, defaultConstructor) { 
-	std::srand(unsigned int (std::time(nullptr))); // use current time as seed for random generator
+	std::srand((unsigned int) (std::time(nullptr))); // use current time as seed for random generator
 
 	// generate random data
     int numerator = std::rand();
@@ -29,7 +29,7 @@ TEST (RatioConstructor, defaultConstructor) {
 }
 
 TEST (RatioConstructor, copyConstructor) {    
-    std::srand(unsigned int (std::time(nullptr))); // use current time as seed for random generator
+    std::srand((unsigned int) (std::time(nullptr))); // use current time as seed for random generator
 
 	// generate random data
     int numerator = std::rand();
@@ -61,7 +61,7 @@ TEST (RatioInformation, irreductible){
 	// run many times the same test with different values
 	for(int run=0; run<100; ++run){
 
-		std::srand(unsigned int (std::time(nullptr))); // use current time as seed for random generator
+		std::srand((unsigned int) (std::time(nullptr))); // use current time as seed for random generator
 
         // generate random data
         int numerator = std::rand();
@@ -78,6 +78,19 @@ TEST (RatioInformation, irreductible){
 
 		ASSERT_EQ (std::gcd(r.getNumerator(), r.getDenominator()), 1);
 	}
+}
+
+//operators
+
+TEST(RatioOperator, sum){
+    Ratio r1(1,2);
+    Ratio r2(2,3);
+    Ratio r3(7,6);
+    Ratio r4=r1+r2;
+
+    ASSERT_EQ(r4.getNumerator(),r3.getNumerator());
+    ASSERT_EQ(r4.getDenominator(),r3.getDenominator());
+
 }
 
 /////////////////////////////////////////////////////

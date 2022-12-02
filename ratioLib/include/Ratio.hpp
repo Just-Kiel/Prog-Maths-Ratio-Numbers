@@ -36,4 +36,7 @@ public:
     /// @brief Permit to have PI in rational number
     /// @return PI in Ratio (103993/33102) with 9 decimals
     static const Ratio pi();
+
+    //Sum Operator
+    Ratio operator+(const Ratio &r) const;
 };
