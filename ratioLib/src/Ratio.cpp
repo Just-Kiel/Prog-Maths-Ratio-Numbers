@@ -37,10 +37,22 @@ const Ratio Ratio::pi(){
     return Ratio(103993, 33102);
 }
 
+//Sum Operator
+
 Ratio Ratio::operator+(const Ratio &r) const
 		{
             Ratio newRatio;
             newRatio.m_numerator=(this->m_numerator*r.m_denominator)+(r.m_numerator*this->m_denominator);
             newRatio.m_denominator=(this->m_denominator*r.m_denominator);
+		    return newRatio;
+		}
+
+//Product Operator
+
+Ratio Ratio::operator*(const Ratio &r) const
+		{
+            Ratio newRatio;
+            newRatio.m_numerator=(this->m_numerator)*(r.m_numerator);
+            newRatio.m_denominator=(this->m_denominator)*(r.m_denominator);
 		    return newRatio;
 		}

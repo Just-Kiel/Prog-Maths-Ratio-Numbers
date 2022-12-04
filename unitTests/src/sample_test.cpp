@@ -82,6 +82,7 @@ TEST (RatioInformation, irreductible){
 
 //operators
 
+//sum test
 TEST(RatioOperator, sum){
     Ratio r1(1,2);
     Ratio r2(2,3);
@@ -92,6 +93,19 @@ TEST(RatioOperator, sum){
     ASSERT_EQ(r4.getDenominator(),r3.getDenominator());
 
 }
+
+//product test
+TEST(RatioOperator, product){
+    Ratio r1(1,2);
+    Ratio r2(2,3);
+    Ratio r3(2,6);
+    Ratio r4=r1*r2;
+
+    ASSERT_EQ(r4.getNumerator(),r3.getNumerator());
+    ASSERT_EQ(r4.getDenominator(),r3.getDenominator());
+
+}
+
 
 /////////////////////////////////////////////////////
 // arithmetic

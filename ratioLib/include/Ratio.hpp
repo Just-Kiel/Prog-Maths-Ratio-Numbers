@@ -39,4 +39,6 @@ public:
 
     //Sum Operator
     Ratio operator+(const Ratio &r) const;
+    //Product Operator
+    Ratio operator*(const Ratio &r) const;
 };
