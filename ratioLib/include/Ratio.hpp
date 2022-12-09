@@ -1,5 +1,7 @@
 #pragma once
+#define _USE_MATH_DEFINES
 #include <iostream>
+#include <cmath>
 
 class Ratio
 {
@@ -41,4 +43,69 @@ public:
     Ratio operator+(const Ratio &r) const;
     //Product Operator
     Ratio operator*(const Ratio &r) const;
+
+    // /// @brief Product of a ratio and a real
+    // /// @param value is the real
+    // /// @return Ratio product of two
+    // template <typename T>
+    // Ratio operator*(const T &value) const{
+    //     // TODO when algorithm will be done
+    // }
+    
+    /// @brief Unary Minus Operator
+    /// @return Current Ratio with m_numerator with opposite sign
+    Ratio operator-() const;
+
+    /// @brief Absolute Value
+    /// @return Current Ratio with m_numerator with positive sign
+    Ratio abs() const;
+
+    /// @brief Permit to have the entire part of the Ratio
+    /// @return Entire part of the Ratio
+    template <typename T>
+    T getEntirePart(){
+        T entirePart = T(m_numerator)/T(m_denominator);
+        std::modf(float(entirePart), &(float(entirePart)));
+        return entirePart;
+    }
+
+    /// @brief Equal Comparison Operator
+    /// @param r1 the first ratio
+    /// @param r2 the second ratio to compare
+    /// @return Boolean if equal or not
+    friend bool operator== (const Ratio& r1, const Ratio& r2);
+
+    /// @brief Not Equal Comparison Operator
+    /// @param r1 the first ratio
+    /// @param r2 the second ratio to compare
+    /// @return Boolean if equal or not
+    friend bool operator!= (const Ratio& r1, const Ratio& r2);
+
+    /// @brief Inferior Comparison Operator
+    /// @param r1 the first ratio
+    /// @param r2 the second ratio to compare
+    /// @return Boolean if inferior or not
+    friend bool operator< (const Ratio& r1, const Ratio& r2);
+
+    /// @brief Superior Comparison Operator
+    /// @param r1 the first ratio
+    /// @param r2 the second ratio to compare
+    /// @return Boolean if superior or not
+    friend bool operator> (const Ratio& r1, const Ratio& r2);
+
+    /// @brief Inferior or Equal Comparison Operator
+    /// @param r1 the first ratio
+    /// @param r2 the second ratio to compare
+    /// @return Boolean if inferior or equal or not
+    friend bool operator<= (const Ratio& r1, const Ratio& r2);
+
+    /// @brief Superior or Equal Comparison Operator
+    /// @param r1 the first ratio
+    /// @param r2 the second ratio to compare
+    /// @return Boolean if superior or equal or not
+    friend bool operator>= (const Ratio& r1, const Ratio& r2);
 };
+
+// TODO when algorithm will be done
+// template <typename T>
+// Ratio Ratio::operator*(const T value, const Ratio &r);

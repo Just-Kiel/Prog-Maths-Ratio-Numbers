@@ -37,22 +37,63 @@ const Ratio Ratio::pi(){
     return Ratio(103993, 33102);
 }
 
-//Sum Operator
 
+//Sum Operator
 Ratio Ratio::operator+(const Ratio &r) const
-		{
-            Ratio newRatio;
-            newRatio.m_numerator=(this->m_numerator*r.m_denominator)+(r.m_numerator*this->m_denominator);
-            newRatio.m_denominator=(this->m_denominator*r.m_denominator);
-		    return newRatio;
-		}
+{
+    Ratio newRatio;
+    newRatio.m_numerator=(this->m_numerator*r.m_denominator)+(r.m_numerator*this->m_denominator);
+    newRatio.m_denominator=(this->m_denominator*r.m_denominator);
+
+    // Check PGCD = 1 and convert if needed
+    newRatio.convertToIrreductible(newRatio.getPGCD());
+    return newRatio;
+}
+
 
 //Product Operator
-
 Ratio Ratio::operator*(const Ratio &r) const
-		{
-            Ratio newRatio;
-            newRatio.m_numerator=(this->m_numerator)*(r.m_numerator);
-            newRatio.m_denominator=(this->m_denominator)*(r.m_denominator);
-		    return newRatio;
-		}
+{
+    Ratio newRatio;
+    newRatio.m_numerator=(this->m_numerator)*(r.m_numerator);
+    newRatio.m_denominator=(this->m_denominator)*(r.m_denominator);
+
+    // Check PGCD = 1 and convert if needed
+    newRatio.convertToIrreductible(newRatio.getPGCD());
+    return newRatio;
+}
+
+// Unary Minus Operator
+Ratio Ratio::operator-() const{
+    return Ratio(-m_numerator, m_denominator);
+}
+
+// Absolute Value
+Ratio Ratio::abs() const{
+    return Ratio(std::abs(m_numerator), m_denominator);
+}
+
+bool operator== (const Ratio& r1, const Ratio& r2){
+    return (r1.m_numerator == r2.m_numerator) && (r1.m_denominator == r2.m_denominator);
+}
+
+bool operator!= (const Ratio& r1, const Ratio& r2){
+    return (r1.m_numerator != r2.m_numerator) || (r1.m_denominator != r2.m_denominator);
+}
+
+bool operator< (const Ratio& r1, const Ratio& r2){
+    // no need to compare denominators because by multiplying they are the same
+    return (r1.m_numerator*r2.m_denominator < r1.m_denominator*r2.m_numerator);
+}
+
+bool operator> (const Ratio& r1, const Ratio& r2){
+    return (r2 < r1);
+}
+
+bool operator<= (const Ratio& r1, const Ratio& r2){
+    return !(r1 > r2);
+}
+
+bool operator>= (const Ratio& r1, const Ratio& r2){
+    return !(r1<r2);
+}

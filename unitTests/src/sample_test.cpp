@@ -81,7 +81,6 @@ TEST (RatioInformation, irreductible){
 }
 
 //operators
-
 //sum test
 TEST(RatioOperator, sum){
     Ratio r1(1,2);
@@ -91,7 +90,6 @@ TEST(RatioOperator, sum){
 
     ASSERT_EQ(r4.getNumerator(),r3.getNumerator());
     ASSERT_EQ(r4.getDenominator(),r3.getDenominator());
-
 }
 
 //product test
@@ -103,116 +101,52 @@ TEST(RatioOperator, product){
 
     ASSERT_EQ(r4.getNumerator(),r3.getNumerator());
     ASSERT_EQ(r4.getDenominator(),r3.getDenominator());
-
 }
 
+// Unary Minus Test
+TEST(RatioOperator, UnaryMinus){
+    Ratio r1(1,2);
+    Ratio r2(-1,2);
+    r1 = -r1;
 
-/////////////////////////////////////////////////////
-// arithmetic
+    ASSERT_EQ(r1.getNumerator(),r2.getNumerator());
+    ASSERT_EQ(r1.getDenominator(),r2.getDenominator());
+}
 
-// TEST (VectorDArithmetic, plus) {
+// Absolute Value Test
+TEST(RatioOperator, AbsoluteValue){
+    Ratio r1(-1,2);
+    Ratio r2(1,2);
+    r1 = r1.abs();
 
-// 	const size_t maxSize = 1000;  // max size of the tested vectors
-// 	std::mt19937 generator(0);
-// 	std::uniform_int_distribution<int> uniformIntDistribution(1,maxSize);
-// 	std::uniform_real_distribution<double> uniformDistributionValue(-int(maxSize),maxSize);
-// 	auto gen = [&uniformDistributionValue, &generator](){ return uniformDistributionValue(generator);};
+    ASSERT_EQ(r1.getNumerator(),r2.getNumerator());
+    ASSERT_EQ(r1.getDenominator(),r2.getDenominator());
+}
 
-// 	// run many times the same test with different values
-// 	for(int run=0; run<100; ++run){
+// Entire Part Test
+TEST(RatioOperator, EntirePart){
+    Ratio r1(-1,2);
+    int entireR1 = r1.getEntirePart<int>();
 
-// 		// define a vector dimension
-// 		const size_t dim = uniformIntDistribution(generator);
+    ASSERT_EQ(entireR1,0);
+}
+//////////////////////////////////////////////////////
+// comparisons
+TEST(RatioComparison, Equal){
+    Ratio r1(-1,2);
+    Ratio r2(r1);
 
-// 		// generate random data
-// 		std::vector<double> data1(dim), data2(dim);
-// 		std::generate(data1.begin(), data1.end(), gen);
-// 		std::generate(data2.begin(), data2.end(), gen);
+    ASSERT_EQ(r1==r2,true);
+    ASSERT_EQ(r1.getNumerator(),r2.getNumerator());
+    ASSERT_EQ(r1.getDenominator(),r2.getDenominator());
+}
 
-// 		// build the corresponding VectorD
-// 		VectorD vec1(dim), vec2(dim), vec3(dim);
-// 		for(size_t i=0; i<dim; ++i){
-// 			vec1[i] = data1[i];
-// 			vec2[i] = data2[i];
-// 		}
+TEST(RatioComparison, NotEqual){
+    Ratio r1(-1,2);
+    Ratio r2(-r1);
 
-// 		vec3 = vec1 + vec2;
-// 		ASSERT_EQ (vec3.size(), dim);
-
-// 		for(size_t i=0; i<dim; ++i){
-// 	    	ASSERT_DOUBLE_EQ (vec3[i], data1[i] + data2[i]);    // EXPECT_DOUBLE_EQ would be fine too
-// 		}
-// 	}
-// }
-
-
-// TEST (VectorDArithmetic, minus) {
-
-// 	const size_t maxSize = 1000;  // max size of the tested vectors
-// 	std::mt19937 generator(0);
-// 	std::uniform_int_distribution<int> uniformIntDistribution(1,maxSize);
-// 	std::uniform_real_distribution<double> uniformDistributionValue(-int(maxSize),maxSize);
-// 	auto gen = [&uniformDistributionValue, &generator](){ return uniformDistributionValue(generator);};
-
-// 	// run many times the same test with different values
-// 	for(int run=0; run<100; ++run){
-
-// 		// define a vector dimension
-// 		const size_t dim = uniformIntDistribution(generator);
-
-// 		// generate random data
-// 		std::vector<double> data1(dim), data2(dim);
-// 		std::generate(data1.begin(), data1.end(), gen);
-// 		std::generate(data2.begin(), data2.end(), gen);
-
-// 		// build the corresponding VectorD
-// 		VectorD vec1(dim), vec2(dim), vec3(dim);
-// 		for(size_t i=0; i<dim; ++i){
-// 			vec1[i] = data1[i];
-// 			vec2[i] = data2[i];
-// 		}
-
-// 		vec3 = vec1 - vec2;
-// 		ASSERT_EQ (vec3.size(), dim);
-
-// 		for(size_t i=0; i<dim; ++i){
-// 	    	ASSERT_DOUBLE_EQ (vec3[i], data1[i] - data2[i]);  // EXPECT_DOUBLE_EQ would be fine too
-// 		}
-// 	}
-// }
-
-// TEST (VectorDArithmetic, dot) {
-// 	const size_t maxSize = 1000;  // max size of the tested vectors
-// 	std::mt19937 generator(0);
-// 	std::uniform_int_distribution<int> uniformIntDistribution(1,maxSize);
-// 	std::uniform_real_distribution<double> uniformDistributionValue(-int(maxSize),maxSize);
-// 	auto gen = [&uniformDistributionValue, &generator](){ return uniformDistributionValue(generator);};
-
-// 	// run many times the same test with different values
-// 	for(int run=0; run<100; ++run){
-
-// 		// define a vector dimension
-// 		const size_t dim = uniformIntDistribution(generator);
-
-// 		// generate random data
-// 		std::vector<double> data1(dim), data2(dim);
-// 		std::generate(data1.begin(), data1.end(), gen);
-// 		std::generate(data2.begin(), data2.end(), gen);
-
-// 		// build the corresponding VectorD
-// 		VectorD vec1(dim), vec2(dim);
-// 		for(size_t i=0; i<dim; ++i){
-// 			vec1[i] = data1[i];
-// 			vec2[i] = data2[i];
-// 		}
-
-// 		double result = 0.0;
-// 		for(size_t i=0; i<vec1.size(); ++i)
-// 			result += vec1[i]*vec2[i];
-
-// 		ASSERT_EQ (result, vec1.dot(vec2));
-// 	}
-// }
+    ASSERT_EQ(r1!=r2,true);
+}
 
 /////////////////////////////////////////////////////
 // exceptions
