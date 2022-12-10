@@ -126,7 +126,7 @@ TEST(RatioOperator, AbsoluteValue){
 // Entire Part Test
 TEST(RatioOperator, EntirePart){
     Ratio r1(-1,2);
-    int entireR1 = r1.getEntirePart<int>();
+    int entireR1 = r1.getEntirePart();
 
     ASSERT_EQ(entireR1,0);
 }

@@ -23,7 +23,7 @@ public:
 		return m_denominator;
 	}
     
-    inline unsigned int getNumerator() const {
+    inline int getNumerator() const {
 		return m_numerator;
 	}
 
@@ -62,12 +62,7 @@ public:
 
     /// @brief Permit to have the entire part of the Ratio
     /// @return Entire part of the Ratio
-    template <typename T>
-    T getEntirePart(){
-        T entirePart = T(m_numerator)/T(m_denominator);
-        std::modf(float(entirePart), &(float(entirePart)));
-        return entirePart;
-    }
+    int getEntirePart() const;
 
     /// @brief Equal Comparison Operator
     /// @param r1 the first ratio
