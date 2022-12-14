@@ -50,6 +50,16 @@ Ratio Ratio::operator+(const Ratio &r) const
     return newRatio;
 }
 
+//Subtraction Operator
+Ratio Ratio::operator-(const Ratio&r) const
+{
+    Ratio newRatio = (*this)+(-r);
+
+    // Check PGCD = 1 and convert if needed
+    newRatio.convertToIrreductible(newRatio.getPGCD());
+    return newRatio;
+}
+
 
 //Product Operator
 Ratio Ratio::operator*(const Ratio &r) const
