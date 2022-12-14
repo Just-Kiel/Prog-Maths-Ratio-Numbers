@@ -44,7 +44,7 @@ public:
     //Product Operator
     Ratio operator*(const Ratio &r) const;
     //Inverse Operator
-    Ratio Ratio::invert() const;
+    Ratio invert() const;
     //Division Operator
     Ratio operator/(const Ratio &r) const;
 
