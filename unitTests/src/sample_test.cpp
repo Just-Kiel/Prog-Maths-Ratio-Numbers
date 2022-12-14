@@ -103,6 +103,15 @@ TEST(RatioOperator, product){
     ASSERT_EQ(r4.getDenominator(),r3.getDenominator());
 }
 
+//inverse test
+TEST(RatioOperator, inverse){
+    Ratio r1(1,2);
+    Ratio r2(2,1);
+    Ratio r3=r1.invert();
+
+    ASSERT_EQ(r3.getNumerator(),r2.getNumerator());
+    ASSERT_EQ(r3.getDenominator(),r2.getDenominator());
+}
 
 //division test
 TEST(RatioOperator, division){

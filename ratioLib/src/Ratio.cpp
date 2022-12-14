@@ -63,13 +63,29 @@ Ratio Ratio::operator*(const Ratio &r) const
     return newRatio;
 }
 
-
-//Product Division
-Ratio Ratio::operator/(const Ratio &r) const
+//Inverse Operator
+Ratio Ratio::invert() const
 {
     Ratio newRatio;
-    newRatio.m_numerator=(this->m_numerator)*(r.m_denominator);
-    newRatio.m_denominator=(this->m_denominator)*(r.m_numerator);
+    newRatio.m_numerator=(this->m_denominator);
+    newRatio.m_denominator=(this->m_numerator);
+
+    // Check PGCD = 1 and convert if needed
+    newRatio.convertToIrreductible(newRatio.getPGCD());
+    return newRatio;
+
+}
+
+//Division Operator
+Ratio Ratio::operator/(const Ratio &r) const
+{
+    //basic code
+    // Ratio newRatio;
+    // newRatio.m_numerator=(this->m_numerator)*(r.m_denominator);
+    // newRatio.m_denominator=(this->m_denominator)*(r.m_numerator);
+
+    //using inverse operator
+    Ratio newRatio=(*this) * r.invert();
 
     // Check PGCD = 1 and convert if needed
     newRatio.convertToIrreductible(newRatio.getPGCD());
