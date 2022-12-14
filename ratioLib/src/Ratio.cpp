@@ -63,6 +63,20 @@ Ratio Ratio::operator*(const Ratio &r) const
     return newRatio;
 }
 
+
+//Product Division
+Ratio Ratio::operator/(const Ratio &r) const
+{
+    Ratio newRatio;
+    newRatio.m_numerator=(this->m_numerator)*(r.m_denominator);
+    newRatio.m_denominator=(this->m_denominator)*(r.m_numerator);
+
+    // Check PGCD = 1 and convert if needed
+    newRatio.convertToIrreductible(newRatio.getPGCD());
+    return newRatio;
+}
+
+
 // Unary Minus Operator
 Ratio Ratio::operator-() const{
     return Ratio(-m_numerator, m_denominator);

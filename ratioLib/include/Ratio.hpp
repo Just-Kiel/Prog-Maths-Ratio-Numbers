@@ -43,6 +43,8 @@ public:
     Ratio operator+(const Ratio &r) const;
     //Product Operator
     Ratio operator*(const Ratio &r) const;
+    //Division Operator
+    Ratio operator/(const Ratio &r) const;
 
     // /// @brief Product of a ratio and a real
     // /// @param value is the real

@@ -103,6 +103,19 @@ TEST(RatioOperator, product){
     ASSERT_EQ(r4.getDenominator(),r3.getDenominator());
 }
 
+
+//division test
+TEST(RatioOperator, division){
+    Ratio r1(1,2);
+    Ratio r2(2,3);
+    Ratio r3(3,4);
+    Ratio r4=r1/r2;
+
+    ASSERT_EQ(r4.getNumerator(),r3.getNumerator());
+    ASSERT_EQ(r4.getDenominator(),r3.getDenominator());
+}
+
+
 // Unary Minus Test
 TEST(RatioOperator, UnaryMinus){
     Ratio r1(1,2);
