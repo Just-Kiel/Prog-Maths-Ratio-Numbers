@@ -128,7 +128,7 @@ bool operator!= (const Ratio& r1, const Ratio& r2){
 
 bool operator< (const Ratio& r1, const Ratio& r2){
     // no need to compare denominators because by multiplying they are the same
-    return (r1.m_numerator*r2.m_denominator < r1.m_denominator*r2.m_numerator);
+    return (r1.m_numerator*static_cast<int>(r2.m_denominator) < static_cast<int>(r1.m_denominator)*r2.m_numerator);
 }
 
 bool operator> (const Ratio& r1, const Ratio& r2){

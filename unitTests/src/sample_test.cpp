@@ -181,6 +181,20 @@ TEST(RatioComparison, NotEqual){
     ASSERT_EQ(r1!=r2,true);
 }
 
+TEST(RatioComparison, Less){
+    Ratio r1(1,2);
+    Ratio r2(-1,2);
+
+    ASSERT_EQ(r2<r1,true);
+}
+
+TEST(RatioComparison, Greater){
+    Ratio r1(1,2);
+    Ratio r2(-1,2);
+
+    ASSERT_EQ(r1>r2,true);
+}
+
 /////////////////////////////////////////////////////
 // exceptions
 
