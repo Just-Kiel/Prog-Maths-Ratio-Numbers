@@ -102,6 +102,31 @@ Ratio Ratio::operator/(const Ratio &r) const
     return newRatio;
 }
 
+    //Pow Operator
+    Ratio Ratio::ratioPow(const int p) const{
+    Ratio newRatio;
+    newRatio.m_numerator=pow((this->m_numerator),p);
+    newRatio.m_denominator=pow((this->m_denominator),p);
+
+    // Check PGCD = 1 and convert if needed
+    newRatio.convertToIrreductible(newRatio.getPGCD());
+    return newRatio;
+}
+
+//SQRT Opertator
+// Ratio Ratio::sqrt() const
+// {
+//     Ratio newRatio;
+//     racine(a/b)=(a/b)^(-1/2) = a^(-1/2)/b^(-1/2)
+
+//     //newRatio.m_numerator=(this->m_numerator)
+
+//     // Check PGCD = 1 and convert if needed
+//     newRatio.convertToIrreductible(newRatio.getPGCD());
+//     return newRatio;
+
+// }
+
 
 // Unary Minus Operator
 Ratio Ratio::operator-() const{

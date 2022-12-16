@@ -135,6 +135,18 @@ TEST(RatioOperator, division){
     ASSERT_EQ(r4.getDenominator(),r3.getDenominator());
 }
 
+//pow test
+TEST(RatioOperator, ratioPow){
+    Ratio r1(1,2);
+    int p=2;
+    Ratio r2(1,4);
+    Ratio r3=r1.ratioPow(p);
+
+    ASSERT_EQ(r3.getNumerator(),r2.getNumerator());
+    ASSERT_EQ(r3.getDenominator(),r2.getDenominator());
+
+}
+
 
 // Unary Minus Test
 TEST(RatioOperator, UnaryMinus){

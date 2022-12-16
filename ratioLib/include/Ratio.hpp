@@ -49,6 +49,10 @@ public:
     Ratio invert() const;
     //Division Operator
     Ratio operator/(const Ratio &r) const;
+    //Pow Operator
+    Ratio ratioPow(const int p) const;
+
+    //SQRT Operator
 
     // /// @brief Product of a ratio and a real
     // /// @param value is the real
