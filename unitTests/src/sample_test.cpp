@@ -114,6 +114,26 @@ TEST(RatioOperator, product){
     ASSERT_EQ(r4.getDenominator(),r3.getDenominator());
 }
 
+//product T value test
+TEST(RatioOperator, productTValue){
+    Ratio r1(1,2);
+    Ratio r2(1,4);
+    Ratio r3=r1*0.5;
+
+    ASSERT_EQ(r2.getNumerator(),r3.getNumerator());
+    ASSERT_EQ(r2.getDenominator(),r3.getDenominator());
+}
+
+//product T value and ratio test
+TEST(RatioOperator, productTValueRatio){
+    Ratio r1(1,2);
+    Ratio r2(1,4);
+    Ratio r3=0.5*r1;
+
+    ASSERT_EQ(r2.getNumerator(),r3.getNumerator());
+    ASSERT_EQ(r2.getDenominator(),r3.getDenominator());
+}
+
 //inverse test
 TEST(RatioOperator, inverse){
     Ratio r1(1,2);
@@ -146,7 +166,6 @@ TEST(RatioOperator, ratioPow){
     ASSERT_EQ(r3.getDenominator(),r2.getDenominator());
 
 }
-
 
 // Unary Minus Test
 TEST(RatioOperator, UnaryMinus){
@@ -205,6 +224,15 @@ TEST(RatioComparison, Greater){
     Ratio r2(-1,2);
 
     ASSERT_EQ(r1>r2,true);
+}
+
+
+// conversion
+TEST(RatioConversion, RealToRatio){
+    Ratio r1 = convertRealToRatio(0.5);
+    Ratio r2(1,2);
+
+    ASSERT_EQ(r1 == r2,true);
 }
 
 /////////////////////////////////////////////////////

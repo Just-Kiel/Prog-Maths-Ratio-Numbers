@@ -19,6 +19,9 @@ public:
     Ratio(const int numerator = 0, const unsigned int denominator = 1);
     Ratio(const Ratio& r);
 
+    template <typename T>
+    Ratio(const T& v): m_numerator(convertRealToRatio(v).m_numerator), m_denominator(convertRealToRatio(v).m_denominator){}
+
     inline unsigned int getDenominator() const {
 		return m_denominator;
 	}
@@ -54,13 +57,14 @@ public:
 
     //SQRT Operator
 
-    // /// @brief Product of a ratio and a real
-    // /// @param value is the real
-    // /// @return Ratio product of two
-    // template <typename T>
-    // Ratio operator*(const T &value) const{
-    //     // TODO when algorithm will be done
-    // }
+    /// @brief Product of a ratio and a real
+    /// @param value is the real
+    /// @return Ratio product of two
+    template <typename T>
+    Ratio operator*(const T &value) const{
+        const Ratio rValue(value);
+        return (*this)*rValue;
+    }
     
     /// @brief Unary Minus Operator
     /// @return Current Ratio with m_numerator with opposite sign
@@ -111,6 +115,33 @@ public:
     friend bool operator>= (const Ratio& r1, const Ratio& r2);
 };
 
-// TODO when algorithm will be done
-// template <typename T>
-// Ratio Ratio::operator*(const T value, const Ratio &r);
+/// @brief Product of a real and a ratio
+/// @param value is real value to multiply
+/// @param r is Ratio to multiply
+/// @return Ratio product of two
+template <typename T>
+Ratio operator*(const T value, const Ratio &r){
+    return r*value;
+}
+
+/// @brief Convert real to Rational number
+/// @param v the real to convert
+/// @return Rational Number
+template <typename T>
+Ratio convertRealToRatio(const T& v, const int& nb_iter = 150){
+    // TODO if int convert immediately
+    // TODO exception if string or char
+    // TODO negatif
+    Ratio result;
+    if(v == static_cast<T>(0)) return Ratio();
+
+    if(nb_iter == 0) return Ratio();
+
+    if(v < static_cast<T>(1)) return (convertRealToRatio(static_cast<T>(1)/v, nb_iter)).invert();
+
+    if(v >= static_cast<T>(1)){
+        const int q = (int) v;
+
+        return Ratio(q, 1)+ convertRealToRatio(v-q, nb_iter-1);
+    }
+}
