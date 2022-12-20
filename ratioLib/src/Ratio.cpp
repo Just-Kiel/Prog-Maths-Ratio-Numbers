@@ -2,16 +2,13 @@
 
 #include <numeric>
 
-#include <stdexcept>  // special exceptions
-#include <string>     // for exceptions
-
 Ratio::Ratio(const int numerator, const unsigned int denominator) : m_numerator(numerator), m_denominator(denominator) {
     if(denominator == 0)
         throw std::logic_error("Ratio::Ratio(numerator, denominator): invalid denominator, can't be 0");
 
     const int pgcd = getPGCD();
     if(pgcd != 1)
-        convertToIrreductible(pgcd);
+        convertToIrreducible(pgcd);
 }
 
 Ratio::Ratio(const Ratio& r) : m_numerator(r.m_numerator), m_denominator(r.m_denominator) {}
@@ -21,7 +18,7 @@ const int Ratio::getPGCD(){
     return std::gcd(m_numerator, m_denominator);
 }
 
-const void Ratio::convertToIrreductible(const int pgcd){
+const void Ratio::convertToIrreducible(const int pgcd){
     m_numerator = m_numerator/pgcd;
     m_denominator = m_denominator/pgcd;
 }
@@ -46,7 +43,7 @@ Ratio Ratio::operator+(const Ratio &r) const
     newRatio.m_denominator=(this->m_denominator*r.m_denominator);
 
     // Check PGCD = 1 and convert if needed
-    newRatio.convertToIrreductible(newRatio.getPGCD());
+    newRatio.convertToIrreducible(newRatio.getPGCD());
     return newRatio;
 }
 
@@ -56,7 +53,7 @@ Ratio Ratio::operator-(const Ratio&r) const
     Ratio newRatio = (*this)+(-r);
 
     // Check PGCD = 1 and convert if needed
-    newRatio.convertToIrreductible(newRatio.getPGCD());
+    newRatio.convertToIrreducible(newRatio.getPGCD());
     return newRatio;
 }
 
@@ -69,19 +66,22 @@ Ratio Ratio::operator*(const Ratio &r) const
     newRatio.m_denominator=(this->m_denominator)*(r.m_denominator);
 
     // Check PGCD = 1 and convert if needed
-    newRatio.convertToIrreductible(newRatio.getPGCD());
+    newRatio.convertToIrreducible(newRatio.getPGCD());
     return newRatio;
 }
 
 //Inverse Operator
 Ratio Ratio::invert() const
 {
+    if(*(this) == infinity()) return Ratio();
+    if(*(this) == Ratio()) return infinity();
+
     Ratio newRatio;
     newRatio.m_numerator=(this->m_denominator);
     newRatio.m_denominator=(this->m_numerator);
 
     // Check PGCD = 1 and convert if needed
-    newRatio.convertToIrreductible(newRatio.getPGCD());
+    newRatio.convertToIrreducible(newRatio.getPGCD());
     return newRatio;
 
 }
@@ -98,7 +98,7 @@ Ratio Ratio::operator/(const Ratio &r) const
     Ratio newRatio=(*this) * r.invert();
 
     // Check PGCD = 1 and convert if needed
-    newRatio.convertToIrreductible(newRatio.getPGCD());
+    newRatio.convertToIrreducible(newRatio.getPGCD());
     return newRatio;
 }
 
@@ -109,7 +109,7 @@ Ratio Ratio::operator/(const Ratio &r) const
     newRatio.m_denominator=pow((this->m_denominator),p);
 
     // Check PGCD = 1 and convert if needed
-    newRatio.convertToIrreductible(newRatio.getPGCD());
+    newRatio.convertToIrreducible(newRatio.getPGCD());
     return newRatio;
 }
 

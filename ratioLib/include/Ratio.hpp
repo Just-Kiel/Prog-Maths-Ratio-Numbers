@@ -2,6 +2,10 @@
 #define _USE_MATH_DEFINES
 #include <iostream>
 #include <cmath>
+#include <string>
+
+#include <stdexcept>  // special exceptions
+#include <type_traits>
 
 class Ratio
 {
@@ -20,7 +24,11 @@ public:
     Ratio(const Ratio& r);
 
     template <typename T>
-    Ratio(const T& v): m_numerator(convertRealToRatio(v).m_numerator), m_denominator(convertRealToRatio(v).m_denominator){}
+    Ratio(const T& v): m_numerator(convertRealToRatio(v).m_numerator), m_denominator(convertRealToRatio(v).m_denominator){
+        // if (typeid(v) == typeid(std::string) || typeid(v) == typeid(char))
+        //     throw std::domain_error("Ratio::Ratio(value): invalid type of parameter, should be a number, can't be a string or a char");
+        static_assert(std::is_arithmetic_v<T>, "Ratio::Ratio(value): invalid type of parameter, should be a number, can't be a string or a char");
+    }
 
     inline unsigned int getDenominator() const {
 		return m_denominator;
@@ -32,7 +40,7 @@ public:
 
     /// @brief If PGCD is not 1, need to divide each by PGCD to obtain rational number
     /// @todo Check if can be inline or not because idk
-    const void convertToIrreductible(const int pgcd);
+    const void convertToIrreducible(const int pgcd);
 
     /// @brief Permit to have infinity in rational number
     /// @return Infinity in Ratio (1/0)
@@ -127,19 +135,24 @@ Ratio operator*(const T value, const Ratio &r){
 /// @brief Convert real to Rational number
 /// @param v the real to convert
 /// @return Rational Number
-template <typename T>
-Ratio convertRealToRatio(const T& v, const int& nb_iter = 150){
-    // TODO if int convert immediately
-    // TODO exception if string or char
+template <typename V>
+Ratio convertRealToRatio(const V& v, const int& nb_iter = 150){
     // TODO negatif
+
+    static_assert(std::is_arithmetic_v<V>, "convertRealToRatio(value, nb_iter): invalid type of parameter, value should be a number, can't be a string or a char");
+
     Ratio result;
-    if(v == static_cast<T>(0)) return Ratio();
+
+    // if int, directly good constructor
+    if(std::is_integral_v<V>) return Ratio(v);
+
+    if(v == static_cast<V>(0)) return Ratio();
 
     if(nb_iter == 0) return Ratio();
 
-    if(v < static_cast<T>(1)) return (convertRealToRatio(static_cast<T>(1)/v, nb_iter)).invert();
+    if(v < static_cast<V>(1)) return (convertRealToRatio(static_cast<V>(1)/v, nb_iter)).invert();
 
-    if(v >= static_cast<T>(1)){
+    if(v >= static_cast<V>(1)){
         const int q = (int) v;
 
         return Ratio(q, 1)+ convertRealToRatio(v-q, nb_iter-1);

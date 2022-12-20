@@ -73,7 +73,7 @@ TEST (RatioInformation, irreductible){
         int pgcd = std::gcd(r.getNumerator(), r.getDenominator());
 
         if(pgcd =! 1){
-            r.convertToIrreductible(pgcd);
+            r.convertToIrreducible(pgcd);
         }
 
 		ASSERT_EQ (std::gcd(r.getNumerator(), r.getDenominator()), 1);
@@ -226,13 +226,18 @@ TEST(RatioComparison, Greater){
     ASSERT_EQ(r1>r2,true);
 }
 
-
+/////////////////////////////////////////////////////
 // conversion
 TEST(RatioConversion, RealToRatio){
     Ratio r1 = convertRealToRatio(0.5);
     Ratio r2(1,2);
 
     ASSERT_EQ(r1 == r2,true);
+
+
+    Ratio rI = convertRealToRatio(2);
+    Ratio rI2(2, 1);
+    ASSERT_EQ(rI == rI2,true);
 }
 
 /////////////////////////////////////////////////////
