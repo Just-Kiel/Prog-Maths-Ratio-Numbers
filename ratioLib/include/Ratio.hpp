@@ -125,10 +125,6 @@ public:
     friend bool operator>= (const Ratio& r1, const Ratio& r2);
 };
 
-
-    // Cout Operator
-    std::ostream& operator<<(std::ostream& os,const Ratio &r);
-
 /// @brief Product of a real and a ratio
 /// @param value is real value to multiply
 /// @param r is Ratio to multiply
@@ -143,8 +139,6 @@ Ratio operator*(const T value, const Ratio &r){
 /// @return Rational Number
 template <typename V>
 Ratio convertRealToRatio(const V& v, const int& nb_iter = 150){
-    // TODO negatif
-
     static_assert(std::is_arithmetic_v<V>, "convertRealToRatio(value, nb_iter): invalid type of parameter, value should be a number, can't be a string or a char");
 
     Ratio result;
@@ -156,10 +150,14 @@ Ratio convertRealToRatio(const V& v, const int& nb_iter = 150){
 
     if(nb_iter == 0) return Ratio();
 
-    if(v < static_cast<V>(1)) return (convertRealToRatio(static_cast<V>(1)/v, nb_iter)).invert();
+    if(v < static_cast<V>(0)) return -(convertRealToRatio(std::abs(v), nb_iter));
+
+    if(v < static_cast<V>(1)){
+        return (convertRealToRatio(static_cast<V>(1)/std::abs(v), nb_iter)).invert();
+    }
 
     if(v >= static_cast<V>(1)){
-        const int q = (int) v;
+        const int q = (int) std::abs(v);
 
         return Ratio(q, 1)+ convertRealToRatio(v-q, nb_iter-1);
     }

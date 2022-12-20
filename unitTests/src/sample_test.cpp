@@ -238,6 +238,12 @@ TEST(RatioConversion, RealToRatio){
     Ratio rI = convertRealToRatio(2);
     Ratio rI2(2, 1);
     ASSERT_EQ(rI == rI2,true);
+
+    Ratio r3 = convertRealToRatio(-0.5);
+    Ratio r4(-1,2);
+
+    ASSERT_EQ(r3.getNumerator(),r4.getNumerator());
+    ASSERT_EQ(r3.getDenominator(),r4.getDenominator());
 }
 
 /////////////////////////////////////////////////////
