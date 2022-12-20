@@ -103,7 +103,8 @@ Ratio Ratio::operator/(const Ratio &r) const
 }
 
     //Pow Operator
-    Ratio Ratio::ratioPow(const int p) const{
+    Ratio Ratio::ratioPow(const int p) const
+    {
     Ratio newRatio;
     newRatio.m_numerator=pow((this->m_numerator),p);
     newRatio.m_denominator=pow((this->m_denominator),p);
@@ -113,7 +114,7 @@ Ratio Ratio::operator/(const Ratio &r) const
     return newRatio;
 }
 
-//SQRT Opertator
+//SQRT Operator
 // Ratio Ratio::sqrt() const
 // {
 //     Ratio newRatio;
@@ -126,6 +127,13 @@ Ratio Ratio::operator/(const Ratio &r) const
 //     return newRatio;
 
 // }
+
+//Cout Operator
+std::ostream& operator<<(std::ostream& os, const Ratio &r)
+{
+    os<<r.m_numerator<<'/'<<r.m_denominator;
+    return os;
+}
 
 
 // Unary Minus Operator

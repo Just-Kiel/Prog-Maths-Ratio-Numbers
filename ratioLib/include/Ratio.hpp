@@ -38,6 +38,8 @@ public:
 		return m_numerator;
 	}
 
+    friend std::ostream& operator<<(std::ostream& os, const Ratio &r) ;
+
     /// @brief If PGCD is not 1, need to divide each by PGCD to obtain rational number
     /// @todo Check if can be inline or not because idk
     const void convertToIrreducible(const int pgcd);
@@ -122,6 +124,10 @@ public:
     /// @return Boolean if superior or equal or not
     friend bool operator>= (const Ratio& r1, const Ratio& r2);
 };
+
+
+    // Cout Operator
+    std::ostream& operator<<(std::ostream& os,const Ratio &r);
 
 /// @brief Product of a real and a ratio
 /// @param value is real value to multiply
