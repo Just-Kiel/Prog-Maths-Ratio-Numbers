@@ -56,3 +56,7 @@ add_subdirectory(googletest)
 # add unitTests
 message(STATUS "unitTests cmake part ..." )
 add_subdirectory(unitTests)
+
+# add myExamples
+message(STATUS "myExamples cmake part ..." )
+add_subdirectory(myExamples)
