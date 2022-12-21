@@ -49,7 +49,5 @@ int main(int argc, char const *argv[])
 
     //How to use the SQRT function ?
 
-
-
     return 0;
 }

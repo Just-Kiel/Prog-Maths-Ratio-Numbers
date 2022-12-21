@@ -53,16 +53,38 @@ public:
     static const Ratio pi();
 
     //Sum Operator
+    /// @brief Sum Operator
+    /// @param r the ratio to add to the first one
+    /// @return Value of the sum of the 2 ratio (the result is a ratio)
     Ratio operator+(const Ratio &r) const;
+
     //Subtraction Operator
+    /// @brief Substraction Operator
+    /// @param r the ratio to substract to the first one
+    /// @return Value of the substraction of the 2 ratio (the result is a ratio)
     Ratio operator-(const Ratio&r) const;
+    
     //Product Operator
+    /// @brief Product Operator
+    /// @param r the ratio to multiply to the first one
+    /// @return Value of the product of the 2 ratio (the result is a ratio)
     Ratio operator*(const Ratio &r) const;
+
     //Inverse Operator
+    /// @brief Inverse Operator
+    /// @return Value of the inverse of the ratio (the result is a ratio)
     Ratio invert() const;
+
     //Division Operator
+    /// @brief Division Operator
+    /// @param r the ratio to divise to the first one
+    /// @return Value of the division of the 2 ratio (the result is a ratio)
     Ratio operator/(const Ratio &r) const;
+
     //Pow Operator
+    /// @brief Pow Operator
+    /// @param p is the power's degree
+    /// @return Value of the ratio at power p (the result is a ratio)
     Ratio ratioPow(const int p) const;
 
     //SQRT Operator
