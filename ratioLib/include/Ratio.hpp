@@ -38,6 +38,9 @@ public:
 		return m_numerator;
 	}
 
+    /// @brief Display operator of ratio
+    /// @param os : recognize an ostream object on the left and return a reference to the original ostream object os
+    /// @param r : ratio to display with to the operator <<
     friend std::ostream& operator<<(std::ostream& os, const Ratio &r) ;
 
     /// @brief If PGCD is not 1, need to divide each by PGCD to obtain rational number
@@ -88,6 +91,10 @@ public:
     Ratio ratioPow(const int p) const;
 
     //SQRT Operator
+    /// @brief SQRT Operator
+    /// @param ...
+    /// @return ...
+    //code
 
     /// @brief Product of a ratio and a real
     /// @param value is the real

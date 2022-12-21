@@ -128,7 +128,7 @@ Ratio Ratio::operator/(const Ratio &r) const
 
 // }
 
-//Cout Operator
+//Display Operator
 std::ostream& operator<<(std::ostream& os, const Ratio &r)
 {
     os<<r.m_numerator<<'/'<<r.m_denominator;
