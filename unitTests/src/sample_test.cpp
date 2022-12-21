@@ -167,6 +167,11 @@ TEST(RatioOperator, ratioPow){
 
 }
 
+//sqrt test
+// TEST(RatioOperator, sqrt){
+    
+// }
+
 // Unary Minus Test
 TEST(RatioOperator, UnaryMinus){
     Ratio r1(1,2);

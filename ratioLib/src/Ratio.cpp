@@ -117,15 +117,11 @@ Ratio Ratio::operator/(const Ratio &r) const
 //SQRT Operator
 // Ratio Ratio::sqrt() const
 // {
-//     Ratio newRatio;
-//     racine(a/b)=(a/b)^(-1/2) = a^(-1/2)/b^(-1/2)
-
-//     //newRatio.m_numerator=(this->m_numerator)
+//     Ratio newRatio=(*this).ratioPow(1/2);
 
 //     // Check PGCD = 1 and convert if needed
-//     newRatio.convertToIrreductible(newRatio.getPGCD());
+//     newRatio.convertToIrreducible(newRatio.getPGCD());
 //     return newRatio;
-
 // }
 
 //Display Operator
