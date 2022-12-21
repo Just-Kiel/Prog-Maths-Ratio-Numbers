@@ -130,7 +130,7 @@ Ratio Ratio::ratioSqrt() const
 //Display Operator
 std::ostream& operator<<(std::ostream& os, const Ratio &r)
 {
-    os<<r.m_numerator<<'/'<<r.m_denominator;
+    os << r.m_numerator << '/' << r.m_denominator << " or real form is " << convertRatioToReal<double>(r);
     return os;
 }
 

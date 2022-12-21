@@ -248,7 +248,7 @@ TEST(RatioComparison, Greater){
 }
 
 /////////////////////////////////////////////////////
-// conversion
+// conversion real to ratio
 TEST(RatioConversion, RealToRatio){
     Ratio r1 = convertRealToRatio(0.5);
     Ratio r2(1,2);
@@ -271,6 +271,22 @@ TEST(RatioConversion, RealToRatio){
 
     ASSERT_EQ(rPI.getNumerator(),PI.getNumerator());
     ASSERT_EQ(rPI.getDenominator(),PI.getDenominator());
+}
+
+// conversion ratio to real
+TEST(RatioConversion, RatioToReal){
+    Ratio r1(1, 2);
+
+    float v1 = convertRatioToReal<float>(r1);
+
+    ASSERT_EQ(v1 == 0.5f,true);
+
+    // int test
+    Ratio r2(3, 1);
+
+    int v2 = convertRatioToReal<int>(r2);
+
+    ASSERT_EQ(v2 == 3,true);
 }
 
 /////////////////////////////////////////////////////

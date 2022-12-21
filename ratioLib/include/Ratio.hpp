@@ -147,6 +147,13 @@ public:
     /// @param r2 the second ratio to compare
     /// @return Boolean if superior or equal or not
     friend bool operator>= (const Ratio& r1, const Ratio& r2);
+
+    
+    /// @brief Convert Rational Number to Real Number
+    /// @param ratio the ratio to convert
+    /// @return Real number of the type wanted
+    template <typename T>
+    friend T convertRatioToReal(const Ratio& ratio);
 };
 
 /// @brief Product of a real and a ratio
@@ -193,4 +200,10 @@ Ratio::Ratio(const T& v): m_numerator(convertRealToRatio(v).m_numerator), m_deno
     // if (typeid(v) == typeid(std::string) || typeid(v) == typeid(char))
     //     throw std::domain_error("Ratio::Ratio(value): invalid type of parameter, should be a number, can't be a string or a char");
     static_assert(std::is_arithmetic_v<T>, "Ratio::Ratio(value): invalid type of parameter, should be a number, can't be a string or a char");
+}
+
+template <typename T>
+T convertRatioToReal(const Ratio& ratio){
+    static_assert(std::is_arithmetic_v<T>, "T convertRatioToReal(ratio): invalid type of typename, should be a number, can't be a string or a char");
+    return static_cast<T>(ratio.m_numerator)/static_cast<T>(ratio.m_denominator);
 }
