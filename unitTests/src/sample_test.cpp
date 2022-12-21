@@ -57,7 +57,7 @@ TEST (RatioVariables, infiniteVar) {
 /////////////////////////////////////////////////////
 // informations
 
-TEST (RatioInformation, irreductible){
+TEST (RatioInformation, irreducible){
 	// run many times the same test with different values
 	for(int run=0; run<100; ++run){
 
@@ -72,7 +72,7 @@ TEST (RatioInformation, irreductible){
 
         int pgcd = std::gcd(r.getNumerator(), r.getDenominator());
 
-        if(pgcd =! 1){
+        if(pgcd != 1){
             r.convertToIrreducible(pgcd);
         }
 
@@ -90,6 +90,17 @@ TEST(RatioOperator, sum){
 
     ASSERT_EQ(r4.getNumerator(),r3.getNumerator());
     ASSERT_EQ(r4.getDenominator(),r3.getDenominator());
+
+    // test on special cases
+    Ratio inf = Ratio::infinity();
+    Ratio supInf = r1 + inf;
+
+    ASSERT_EQ(inf == supInf, true);
+
+    Ratio zero = Ratio();
+    Ratio r5 = r1 + zero;
+
+    ASSERT_EQ(r5 == r1, true);
 }
 
 //subtraction test
@@ -249,6 +260,12 @@ TEST(RatioConversion, RealToRatio){
 
     ASSERT_EQ(r3.getNumerator(),r4.getNumerator());
     ASSERT_EQ(r3.getDenominator(),r4.getDenominator());
+
+    Ratio rPI = convertRealToRatio(3.14159265301, 6);
+    Ratio PI = Ratio::pi();
+
+    ASSERT_EQ(rPI.getNumerator(),PI.getNumerator());
+    ASSERT_EQ(rPI.getDenominator(),PI.getDenominator());
 }
 
 /////////////////////////////////////////////////////

@@ -24,11 +24,7 @@ public:
     Ratio(const Ratio& r);
 
     template <typename T>
-    Ratio(const T& v): m_numerator(convertRealToRatio(v).m_numerator), m_denominator(convertRealToRatio(v).m_denominator){
-        // if (typeid(v) == typeid(std::string) || typeid(v) == typeid(char))
-        //     throw std::domain_error("Ratio::Ratio(value): invalid type of parameter, should be a number, can't be a string or a char");
-        static_assert(std::is_arithmetic_v<T>, "Ratio::Ratio(value): invalid type of parameter, should be a number, can't be a string or a char");
-    }
+    Ratio(const T& v);
 
     inline unsigned int getDenominator() const {
 		return m_denominator;
@@ -62,9 +58,9 @@ public:
     Ratio operator+(const Ratio &r) const;
 
     //Subtraction Operator
-    /// @brief Substraction Operator
-    /// @param r the ratio to substract to the first one
-    /// @return Value of the substraction of the 2 ratio (the result is a ratio)
+    /// @brief Subtraction Operator
+    /// @param r the ratio to subtract to the first one
+    /// @return Value of the subtraction of the 2 ratio (the result is a ratio)
     Ratio operator-(const Ratio&r) const;
     
     //Product Operator
@@ -80,7 +76,7 @@ public:
 
     //Division Operator
     /// @brief Division Operator
-    /// @param r the ratio to divise to the first one
+    /// @param r the ratio to divide to the first one
     /// @return Value of the division of the 2 ratio (the result is a ratio)
     Ratio operator/(const Ratio &r) const;
 
@@ -164,9 +160,10 @@ Ratio operator*(const T value, const Ratio &r){
 
 /// @brief Convert real to Rational number
 /// @param v the real to convert
+/// @param nb_iter the number of iterations (6 because to get almost 10 decimals of PI, need 6 iterations)
 /// @return Rational Number
 template <typename V>
-Ratio convertRealToRatio(const V& v, const int& nb_iter = 150){
+Ratio convertRealToRatio(const V& v, const int& nb_iter = 6){
     static_assert(std::is_arithmetic_v<V>, "convertRealToRatio(value, nb_iter): invalid type of parameter, value should be a number, can't be a string or a char");
 
     Ratio result;
@@ -189,4 +186,11 @@ Ratio convertRealToRatio(const V& v, const int& nb_iter = 150){
 
         return Ratio(q, 1)+ convertRealToRatio(v-q, nb_iter-1);
     }
+}
+
+template <typename T>
+Ratio::Ratio(const T& v): m_numerator(convertRealToRatio(v).m_numerator), m_denominator(convertRealToRatio(v).m_denominator){
+    // if (typeid(v) == typeid(std::string) || typeid(v) == typeid(char))
+    //     throw std::domain_error("Ratio::Ratio(value): invalid type of parameter, should be a number, can't be a string or a char");
+    static_assert(std::is_arithmetic_v<T>, "Ratio::Ratio(value): invalid type of parameter, should be a number, can't be a string or a char");
 }
