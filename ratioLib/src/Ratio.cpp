@@ -115,14 +115,17 @@ Ratio Ratio::operator/(const Ratio &r) const
 }
 
 //SQRT Operator
-// Ratio Ratio::sqrt() const
-// {
-//     Ratio newRatio=(*this).ratioPow(1/2);
+Ratio Ratio::ratioSqrt() const
+{
+    //Ratio newRatio=(*this).ratioPow(1/2);
+    Ratio newRatio;
+    newRatio.m_numerator=sqrt(this->m_numerator);
+    newRatio.m_denominator=sqrt(this->m_denominator);
 
-//     // Check PGCD = 1 and convert if needed
-//     newRatio.convertToIrreducible(newRatio.getPGCD());
-//     return newRatio;
-// }
+    // Check PGCD = 1 and convert if needed
+    newRatio.convertToIrreducible(newRatio.getPGCD());
+    return newRatio;
+}
 
 //Display Operator
 std::ostream& operator<<(std::ostream& os, const Ratio &r)

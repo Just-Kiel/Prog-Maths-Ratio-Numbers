@@ -89,7 +89,7 @@ public:
     //SQRT Operator
     /// @brief SQRT Operator
     /// @return Result of the square root of the ratio
-   //Ratio sqrt() const;
+    Ratio ratioSqrt() const;
 
     /// @brief Product of a ratio and a real
     /// @param value is the real

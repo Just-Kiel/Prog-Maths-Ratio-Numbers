@@ -179,9 +179,14 @@ TEST(RatioOperator, ratioPow){
 }
 
 //sqrt test
-// TEST(RatioOperator, sqrt){
-    
-// }
+ TEST(RatioOperator, ratioSqrt){
+     Ratio r1(1,4);
+     Ratio r2(1,2);
+     Ratio r3=r1.ratioSqrt();
+    // does'nt work for ratio with a num or a denum = primary number because sqrt(primary) isn't a entire ratio but an approximation
+     ASSERT_EQ(r3.getNumerator(),r2.getNumerator());
+     ASSERT_EQ(r3.getDenominator(),r2.getDenominator());
+}
 
 // Unary Minus Test
 TEST(RatioOperator, UnaryMinus){
