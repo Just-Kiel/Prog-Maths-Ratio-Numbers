@@ -161,17 +161,20 @@ TEST(RatioOperator, division){
     Ratio r2(2,3);
     Ratio r3(3,4);
     Ratio r4=r1/r2;
+    //Ratio r5=r1*(r2.ratioPow(-1)); Ne fonctionne pas avec les puissances négatives
 
     ASSERT_EQ(r4.getNumerator(),r3.getNumerator());
     ASSERT_EQ(r4.getDenominator(),r3.getDenominator());
+    //ASSERT_EQ(r5.getNumerator(),r3.getNumerator());
+    //ASSERT_EQ(r5.getDenominator(),r3.getDenominator());
+
 }
 
 //pow test
 TEST(RatioOperator, ratioPow){
     Ratio r1(1,2);
-    int p=2;
     Ratio r2(1,4);
-    Ratio r3=r1.ratioPow(p);
+    Ratio r3=r1.ratioPow(2);
 
     ASSERT_EQ(r3.getNumerator(),r2.getNumerator());
     ASSERT_EQ(r3.getDenominator(),r2.getDenominator());
