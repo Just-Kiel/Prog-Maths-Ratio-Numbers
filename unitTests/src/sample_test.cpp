@@ -186,7 +186,7 @@ TEST(RatioOperator, ratioPow){
      Ratio r1(1,4);
      Ratio r2(1,2);
      Ratio r3=r1.ratioSqrt();
-    /* doesn't work for non rational numbers (approx)
+    /* doesn't work for non rational numbers (approx) ex : srqt(2)
      doesn't work when we made sqrt(primary number) or sqrt(A) where A is a number which can be decomposed
      in product of sqrt(primary number) 
      */
