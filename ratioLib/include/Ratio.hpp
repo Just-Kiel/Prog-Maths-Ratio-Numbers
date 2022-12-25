@@ -167,6 +167,43 @@ public:
     /// @brief Permit to have the entire part of the Ratio
     /// @return Entire part of the Ratio
     int getEntirePart() const;
+
+
+    /// @brief Sum Operator by reference
+    /// @param r the ratio to add
+    /// @return Value of the sum of the 2 values (the result is a ratio)
+    Ratio & operator+=(const Ratio &r);
+    
+    /// @brief Sum Operator Templated by reference
+    template <typename T>
+    Ratio & operator+=(const T &value);
+
+    /// @brief Subtraction Operator by reference
+    /// @param r the ratio to subtract to the first one
+    /// @return Value of the subtraction of the 2 ratio (the result is a ratio)
+    Ratio & operator-=(const Ratio &r);
+
+    /// @brief Subtraction Operator Templated by reference
+    template <typename T>
+    Ratio & operator-=(const T &value);
+
+    /// @brief Product Operator by reference
+    /// @param r the ratio to multiply to the first one
+    /// @return Value of the product of the 2 ratio (the result is a ratio)
+    Ratio & operator*=(const Ratio &r);
+
+    /// @brief Product Operator Templated by reference
+    template <typename T>
+    Ratio & operator*=(const T &value);
+
+    /// @brief Division Operator by reference
+    /// @param r the ratio to divide to the first one
+    /// @return Value of the division of the 2 ratio (the result is a ratio)
+    Ratio & operator/=(const Ratio &r);
+
+    /// @brief Division Operator Templated by reference
+    template <typename T>
+    Ratio & operator/=(const T &value);
     
     /// @brief Convert Rational Number to Real Number
     /// @param ratio the ratio to convert
@@ -256,4 +293,40 @@ Ratio Ratio::operator/(const T &value) const{
     Ratio rVal = convertRealToRatio(value);
 
     return (*this) / rVal;
+}
+
+template <typename T>
+Ratio& Ratio::operator+=(const T &value){
+    static_assert(std::is_arithmetic_v<T>, "Ratio::operator+=(value): invalid type of typename, should be a number, can't be a string or a char");
+
+    Ratio rVal = convertRealToRatio(value);
+
+    return (*this) += rVal;
+}
+
+template <typename T>
+Ratio& Ratio::operator-=(const T &value){
+    static_assert(std::is_arithmetic_v<T>, "Ratio::operator-=(value): invalid type of typename, should be a number, can't be a string or a char");
+
+    Ratio rVal = convertRealToRatio(value);
+
+    return (*this) -= rVal;
+}
+
+template <typename T>
+Ratio& Ratio::operator*=(const T &value){
+    static_assert(std::is_arithmetic_v<T>, "Ratio::operator*=(value): invalid type of typename, should be a number, can't be a string or a char");
+
+    Ratio rVal = convertRealToRatio(value);
+
+    return (*this) *= rVal;
+}
+
+template <typename T>
+Ratio& Ratio::operator/=(const T &value){
+    static_assert(std::is_arithmetic_v<T>, "Ratio::operator/=(value): invalid type of typename, should be a number, can't be a string or a char");
+
+    Ratio rVal = convertRealToRatio(value);
+
+    return (*this) /= rVal;
 }

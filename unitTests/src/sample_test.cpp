@@ -322,6 +322,20 @@ TEST(RatioOperator, EntirePart){
 
     ASSERT_EQ(entireR1,0);
 }
+
+//sum test by reference
+TEST(RatioOperator, sumByRef){
+    Ratio r1(1,2);
+    Ratio r2(2,3);
+    Ratio r3(7,6);
+
+    r1 += r2;
+
+    ASSERT_EQ(r1 == r3, true);
+
+    r2 += 1;
+    ASSERT_EQ(r2 == Ratio(5,3), true);
+}
 //////////////////////////////////////////////////////
 // comparisons
 TEST(RatioComparison, Equal){

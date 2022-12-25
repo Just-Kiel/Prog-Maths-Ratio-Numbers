@@ -164,6 +164,26 @@ int Ratio::getEntirePart() const{
     return m_numerator/static_cast<int>(m_denominator);
 }
 
+Ratio& Ratio::operator+=(const Ratio &r){
+    *(this) = *(this) + r;
+    return *(this);
+}
+
+Ratio& Ratio::operator-=(const Ratio &r){
+    *(this) = *(this) - r;
+    return *(this);
+}
+
+Ratio& Ratio::operator*=(const Ratio &r){
+    *(this) = *(this) * r;
+    return *(this);
+}
+
+Ratio& Ratio::operator/=(const Ratio &r){
+    *(this) = *(this) / r;
+    return *(this);
+}
+
 bool operator== (const Ratio& r1, const Ratio& r2){
     return (r1.m_numerator == r2.m_numerator) && (r1.m_denominator == r2.m_denominator);
 }
