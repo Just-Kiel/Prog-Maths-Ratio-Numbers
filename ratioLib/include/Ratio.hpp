@@ -44,12 +44,51 @@ public:
     const void convertToIrreducible(const int pgcd);
 
     /// @brief Permit to have infinity in rational number
+    /// @param sign the sign of infinity
     /// @return Infinity in Ratio (1/0)
-    static const Ratio infinity();
+    static const Ratio infinity(const int& sign = 1);
 
     /// @brief Permit to have PI in rational number
     /// @return PI in Ratio (103993/33102) with 9 decimals
     static const Ratio pi();
+
+    /// @brief Equal Comparison Operator
+    /// @param r1 the first ratio
+    /// @param r2 the second ratio to compare
+    /// @return Boolean if equal or not
+    friend bool operator== (const Ratio& r1, const Ratio& r2);
+
+    /// @brief Not Equal Comparison Operator
+    /// @param r1 the first ratio
+    /// @param r2 the second ratio to compare
+    /// @return Boolean if equal or not
+    friend bool operator!= (const Ratio& r1, const Ratio& r2);
+
+    /// @brief Inferior Comparison Operator
+    /// @param r1 the first ratio
+    /// @param r2 the second ratio to compare
+    /// @return Boolean if inferior or not
+    friend bool operator< (const Ratio& r1, const Ratio& r2);
+
+    /// @brief Superior Comparison Operator
+    /// @param r1 the first ratio
+    /// @param r2 the second ratio to compare
+    /// @return Boolean if superior or not
+    friend bool operator> (const Ratio& r1, const Ratio& r2);
+
+    /// @brief Inferior or Equal Comparison Operator
+    /// @param r1 the first ratio
+    /// @param r2 the second ratio to compare
+    /// @return Boolean if inferior or equal or not
+    friend bool operator<= (const Ratio& r1, const Ratio& r2);
+
+    /// @brief Superior or Equal Comparison Operator
+    /// @param r1 the first ratio
+    /// @param r2 the second ratio to compare
+    /// @return Boolean if superior or equal or not
+    friend bool operator>= (const Ratio& r1, const Ratio& r2);
+
+    
 
     //Sum Operator
     /// @brief Sum Operator
@@ -111,43 +150,6 @@ public:
     /// @brief Permit to have the entire part of the Ratio
     /// @return Entire part of the Ratio
     int getEntirePart() const;
-
-    /// @brief Equal Comparison Operator
-    /// @param r1 the first ratio
-    /// @param r2 the second ratio to compare
-    /// @return Boolean if equal or not
-    friend bool operator== (const Ratio& r1, const Ratio& r2);
-
-    /// @brief Not Equal Comparison Operator
-    /// @param r1 the first ratio
-    /// @param r2 the second ratio to compare
-    /// @return Boolean if equal or not
-    friend bool operator!= (const Ratio& r1, const Ratio& r2);
-
-    /// @brief Inferior Comparison Operator
-    /// @param r1 the first ratio
-    /// @param r2 the second ratio to compare
-    /// @return Boolean if inferior or not
-    friend bool operator< (const Ratio& r1, const Ratio& r2);
-
-    /// @brief Superior Comparison Operator
-    /// @param r1 the first ratio
-    /// @param r2 the second ratio to compare
-    /// @return Boolean if superior or not
-    friend bool operator> (const Ratio& r1, const Ratio& r2);
-
-    /// @brief Inferior or Equal Comparison Operator
-    /// @param r1 the first ratio
-    /// @param r2 the second ratio to compare
-    /// @return Boolean if inferior or equal or not
-    friend bool operator<= (const Ratio& r1, const Ratio& r2);
-
-    /// @brief Superior or Equal Comparison Operator
-    /// @param r1 the first ratio
-    /// @param r2 the second ratio to compare
-    /// @return Boolean if superior or equal or not
-    friend bool operator>= (const Ratio& r1, const Ratio& r2);
-
     
     /// @brief Convert Rational Number to Real Number
     /// @param ratio the ratio to convert

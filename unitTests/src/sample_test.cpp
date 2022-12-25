@@ -112,6 +112,17 @@ TEST(RatioOperator, subtraction){
 
     ASSERT_EQ(r4.getNumerator(),r3.getNumerator());
     ASSERT_EQ(r4.getDenominator(),r3.getDenominator());
+
+    // test on special cases
+    Ratio inf = Ratio::infinity();
+    Ratio r5 = inf - inf;
+    ASSERT_EQ(r5 == 0, true);
+
+    Ratio r6 = inf - r1;
+    ASSERT_EQ(r6 == inf, true);
+
+    Ratio r7 = r1 - inf;
+    ASSERT_EQ(r7 == -inf, true);
 }
 
 //product test
@@ -123,6 +134,29 @@ TEST(RatioOperator, product){
 
     ASSERT_EQ(r4.getNumerator(),r3.getNumerator());
     ASSERT_EQ(r4.getDenominator(),r3.getDenominator());
+
+    // test on special cases
+    Ratio inf = Ratio::infinity();
+    Ratio r5 = inf * inf;
+    ASSERT_EQ(r5 == inf, true);
+
+    Ratio r6 = inf * r1;
+    ASSERT_EQ(r6 == inf, true);
+
+    Ratio r7 = r1 * inf;
+    ASSERT_EQ(r7 == inf, true);
+
+    Ratio r9 = -r1;
+    Ratio r10 = r9 * inf;
+    ASSERT_EQ(r10 == -inf, true);
+
+    Ratio r11 = inf * r9;
+    ASSERT_EQ(r11 == -inf, true);
+
+    Ratio zero = Ratio();
+    Ratio r8 = r1 * zero;
+
+    ASSERT_EQ(r8 == zero, true);
 }
 
 //product T value test
@@ -133,6 +167,19 @@ TEST(RatioOperator, productTValue){
 
     ASSERT_EQ(r2.getNumerator(),r3.getNumerator());
     ASSERT_EQ(r2.getDenominator(),r3.getDenominator());
+
+    // test on special cases
+    Ratio inf = Ratio::infinity();
+    Ratio r5 = inf * 0.5;
+    ASSERT_EQ(r5 == inf, true);
+
+    Ratio r7 = inf * -1;
+    ASSERT_EQ(r7 == -inf, true);
+
+    Ratio zero = Ratio();
+    Ratio r6 = zero * 0.5;
+
+    ASSERT_EQ(r6 == zero, true);
 }
 
 //product T value and ratio test
@@ -143,6 +190,19 @@ TEST(RatioOperator, productTValueRatio){
 
     ASSERT_EQ(r2.getNumerator(),r3.getNumerator());
     ASSERT_EQ(r2.getDenominator(),r3.getDenominator());
+
+    // test on special cases
+    Ratio inf = Ratio::infinity();
+    Ratio r5 = 0.5 * inf;
+    ASSERT_EQ(r5 == inf, true);
+
+    Ratio r7 = -1 * inf;
+    ASSERT_EQ(r7 == -inf, true);
+
+    Ratio zero = Ratio();
+    Ratio r6 = 0.5 * zero;
+
+    ASSERT_EQ(r6 == zero, true);
 }
 
 //inverse test
@@ -153,6 +213,16 @@ TEST(RatioOperator, inverse){
 
     ASSERT_EQ(r3.getNumerator(),r2.getNumerator());
     ASSERT_EQ(r3.getDenominator(),r2.getDenominator());
+
+    // test on special cases
+    Ratio inf = Ratio::infinity();
+    Ratio zero = Ratio();
+
+    Ratio r5 = inf.invert();
+    ASSERT_EQ(r5 == zero, true);
+
+    Ratio r6 = zero.invert();
+    ASSERT_EQ(r6 == inf, true);
 }
 
 //division test
@@ -168,6 +238,18 @@ TEST(RatioOperator, division){
     //ASSERT_EQ(r5.getNumerator(),r3.getNumerator());
     //ASSERT_EQ(r5.getDenominator(),r3.getDenominator());
 
+
+    // test on special cases
+    Ratio inf = Ratio::infinity();
+    Ratio r6 = inf / r1;
+    ASSERT_EQ(r6 == inf, true);
+
+    Ratio r8 = -r1;
+    Ratio r9 = inf / r8;
+    ASSERT_EQ(r9 == -inf, true);
+
+    Ratio r7 = r1 / inf;
+    ASSERT_EQ(r7 == 0, true);
 }
 
 //pow test
@@ -179,19 +261,27 @@ TEST(RatioOperator, ratioPow){
     ASSERT_EQ(r3.getNumerator(),r2.getNumerator());
     ASSERT_EQ(r3.getDenominator(),r2.getDenominator());
 
+    // test on special cases
+    Ratio inf = Ratio::infinity();
+    Ratio r5 = inf.ratioPow(2);
+    ASSERT_EQ(r5 == inf, true);
+
+    Ratio zero = Ratio();
+    Ratio r6 = zero.ratioPow(2);
+    ASSERT_EQ(r6 == zero, true);
 }
 
 //sqrt test
- TEST(RatioOperator, ratioSqrt){
-     Ratio r1(1,4);
-     Ratio r2(1,2);
-     Ratio r3=r1.ratioSqrt();
-    /* doesn't work for non rational numbers (approx) ex : srqt(2)
-     doesn't work when we made sqrt(primary number) or sqrt(A) where A is a number which can be decomposed
-     in product of sqrt(primary number) 
-     */
-     ASSERT_EQ(r3.getNumerator(),r2.getNumerator());
-     ASSERT_EQ(r3.getDenominator(),r2.getDenominator());
+TEST(RatioOperator, ratioSqrt){
+    Ratio r1(1,4);
+    Ratio r2(1,2);
+    Ratio r3=r1.ratioSqrt();
+/* doesn't work for non rational numbers (approx) ex : srqt(2)
+    doesn't work when we made sqrt(primary number) or sqrt(A) where A is a number which can be decomposed
+    in product of sqrt(primary number) 
+    */
+    ASSERT_EQ(r3.getNumerator(),r2.getNumerator());
+    ASSERT_EQ(r3.getDenominator(),r2.getDenominator());
 }
 
 // Unary Minus Test
@@ -202,6 +292,11 @@ TEST(RatioOperator, UnaryMinus){
 
     ASSERT_EQ(r1.getNumerator(),r2.getNumerator());
     ASSERT_EQ(r1.getDenominator(),r2.getDenominator());
+
+    Ratio inf = Ratio::infinity();
+    Ratio minInf = -inf;
+    ASSERT_EQ(-inf.getNumerator(),minInf.getNumerator());
+    ASSERT_EQ(-inf.getDenominator(),minInf.getDenominator());
 }
 
 // Absolute Value Test

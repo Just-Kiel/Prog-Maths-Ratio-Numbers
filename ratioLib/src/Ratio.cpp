@@ -23,9 +23,9 @@ const void Ratio::convertToIrreducible(const int pgcd){
     m_denominator = m_denominator/pgcd;
 }
 
-const Ratio Ratio::infinity(){
+const Ratio Ratio::infinity(const int& sign){
     Ratio r;
-    r.m_numerator = 1;
+    r.m_numerator = (sign > 0) ? 1 : -1;
     r.m_denominator = 0;
     return r;
 }
@@ -50,6 +50,16 @@ Ratio Ratio::operator+(const Ratio &r) const
 //Subtraction Operator
 Ratio Ratio::operator-(const Ratio&r) const
 {
+    if(*(this) == Ratio::infinity()){
+        if (r == Ratio::infinity())
+        {
+            return Ratio();
+        }
+        return Ratio::infinity();
+    }
+
+    if (r == Ratio::infinity()) return -Ratio::infinity();
+
     Ratio newRatio = (*this)+(-r);
 
     // Check PGCD = 1 and convert if needed
@@ -77,8 +87,8 @@ Ratio Ratio::invert() const
     if(*(this) == Ratio()) return infinity();
 
     Ratio newRatio;
-    newRatio.m_numerator=(this->m_denominator);
-    newRatio.m_denominator=(this->m_numerator);
+    newRatio.m_numerator= (this->m_numerator < 0) ?  -(this->m_denominator) : (this->m_denominator);
+    newRatio.m_denominator= std::abs((this->m_numerator));
 
     // Check PGCD = 1 and convert if needed
     newRatio.convertToIrreducible(newRatio.getPGCD());
@@ -89,6 +99,9 @@ Ratio Ratio::invert() const
 //Division Operator
 Ratio Ratio::operator/(const Ratio &r) const
 {
+    if (r == Ratio())
+        throw std::invalid_argument("Ratio Ratio::operator/(ratio): cannot be divide by 0");
+        
     //basic code
     // Ratio newRatio;
     // newRatio.m_numerator=(this->m_numerator)*(r.m_denominator);
@@ -102,9 +115,9 @@ Ratio Ratio::operator/(const Ratio &r) const
     return newRatio;
 }
 
-    //Pow Operator
-    Ratio Ratio::ratioPow(const int p) const
-    {
+//Pow Operator
+Ratio Ratio::ratioPow(const int p) const
+{
     Ratio newRatio;
     newRatio.m_numerator=pow((this->m_numerator),p);
     newRatio.m_denominator=pow((this->m_denominator),p);
@@ -137,6 +150,7 @@ std::ostream& operator<<(std::ostream& os, const Ratio &r)
 
 // Unary Minus Operator
 Ratio Ratio::operator-() const{
+    if(*(this) == Ratio::infinity()) return Ratio::infinity(-1);
     return Ratio(-m_numerator, m_denominator);
 }
 
