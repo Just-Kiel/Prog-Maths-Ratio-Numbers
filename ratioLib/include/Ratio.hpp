@@ -96,17 +96,38 @@ public:
     /// @return Value of the sum of the 2 ratio (the result is a ratio)
     Ratio operator+(const Ratio &r) const;
 
+    //Sum Operator
+    /// @brief Sum Operator Templated
+    template <typename T>
+    Ratio operator+(const T &value) const;
+
     //Subtraction Operator
     /// @brief Subtraction Operator
     /// @param r the ratio to subtract to the first one
     /// @return Value of the subtraction of the 2 ratio (the result is a ratio)
     Ratio operator-(const Ratio&r) const;
     
+    //Subtraction Operator
+    /// @brief Subtraction Operator Templated
+    template <typename T>
+    Ratio operator-(const T &value) const;
+
     //Product Operator
     /// @brief Product Operator
     /// @param r the ratio to multiply to the first one
     /// @return Value of the product of the 2 ratio (the result is a ratio)
     Ratio operator*(const Ratio &r) const;
+    
+    //Product Operator
+    /// @brief Product of a ratio and a real
+    /// @param value is the real
+    /// @return Ratio product of two
+    template <typename T>
+    Ratio operator*(const T &value) const{
+        static_assert(std::is_arithmetic_v<T>, "Ratio::operator*(value): invalid type of typename, should be a number, can't be a string or a char");
+        const Ratio rValue(value);
+        return (*this)*rValue;
+    }
 
     //Inverse Operator
     /// @brief Inverse Operator
@@ -118,6 +139,11 @@ public:
     /// @param r the ratio to divide to the first one
     /// @return Value of the division of the 2 ratio (the result is a ratio)
     Ratio operator/(const Ratio &r) const;
+    
+    //Division Operator
+    /// @brief Division Operator Templated
+    template <typename T>
+    Ratio operator/(const T &value) const;
 
     //Pow Operator
     /// @brief Pow Operator
@@ -129,15 +155,6 @@ public:
     /// @brief SQRT Operator
     /// @return Result of the square root of the ratio
     Ratio ratioSqrt() const;
-
-    /// @brief Product of a ratio and a real
-    /// @param value is the real
-    /// @return Ratio product of two
-    template <typename T>
-    Ratio operator*(const T &value) const{
-        const Ratio rValue(value);
-        return (*this)*rValue;
-    }
     
     /// @brief Unary Minus Operator
     /// @return Current Ratio with m_numerator with opposite sign
@@ -164,6 +181,8 @@ public:
 /// @return Ratio product of two
 template <typename T>
 Ratio operator*(const T value, const Ratio &r){
+    static_assert(std::is_arithmetic_v<T>, "Ratio::operator*(value, ratio): invalid type of typename, should be a number, can't be a string or a char");
+
     return r*value;
 }
 
@@ -208,4 +227,33 @@ template <typename T>
 T convertRatioToReal(const Ratio& ratio){
     static_assert(std::is_arithmetic_v<T>, "T convertRatioToReal(ratio): invalid type of typename, should be a number, can't be a string or a char");
     return static_cast<T>(ratio.m_numerator)/static_cast<T>(ratio.m_denominator);
+}
+
+
+// Simple Math Operators
+template <typename T>
+Ratio Ratio::operator+(const T &value) const{
+    static_assert(std::is_arithmetic_v<T>, "Ratio::operator+(value): invalid type of typename, should be a number, can't be a string or a char");
+
+    Ratio rVal = convertRealToRatio(value);
+
+    return (*this) + rVal;
+}
+
+template <typename T>
+Ratio Ratio::operator-(const T &value) const{
+    static_assert(std::is_arithmetic_v<T>, "Ratio::operator-(value): invalid type of typename, should be a number, can't be a string or a char");
+
+    Ratio rVal = convertRealToRatio(value);
+
+    return (*this) - rVal;
+}
+
+template <typename T>
+Ratio Ratio::operator/(const T &value) const{
+    static_assert(std::is_arithmetic_v<T>, "Ratio::operator-(value): invalid type of typename, should be a number, can't be a string or a char");
+
+    Ratio rVal = convertRealToRatio(value);
+
+    return (*this) / rVal;
 }

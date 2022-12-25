@@ -101,6 +101,12 @@ TEST(RatioOperator, sum){
     Ratio r5 = r1 + zero;
 
     ASSERT_EQ(r5 == r1, true);
+
+    Ratio r6 = r1 + 3;
+    ASSERT_EQ(r6 == Ratio(7,2), true);
+
+    Ratio r7 = r1 + 3 + r1;
+    ASSERT_EQ(r7 == Ratio(8,2), true);
 }
 
 //subtraction test
