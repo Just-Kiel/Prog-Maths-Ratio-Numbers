@@ -52,6 +52,8 @@ public:
     /// @return PI in Ratio (103993/33102) with 9 decimals
     static const Ratio pi();
 
+
+    //////// Comparison Operators
     /// @brief Equal Comparison Operator
     /// @param r1 the first ratio
     /// @param r2 the second ratio to compare
@@ -150,6 +152,12 @@ public:
     /// @param p is the power's degree
     /// @return Value of the ratio at power p (the result is a ratio)
     Ratio ratioPow(const int p) const;
+
+    /// @brief Pow Operator Variadic
+    /// @param p is the power's degree
+    /// @return Value of the ratio at power p (the result is a ratio)
+    template <typename ... Args>
+    Ratio ratioPow(const int p, const Args ...args) const;
 
     //SQRT Operator
     /// @brief SQRT Operator
@@ -329,4 +337,11 @@ Ratio& Ratio::operator/=(const T &value){
     Ratio rVal = convertRealToRatio(value);
 
     return (*this) /= rVal;
+}
+
+
+// Pow Variadic
+template <typename ... Args>
+Ratio Ratio::ratioPow(const int p, const Args ...args) const{
+    return this->ratioPow(p).ratioPow(args...);
 }

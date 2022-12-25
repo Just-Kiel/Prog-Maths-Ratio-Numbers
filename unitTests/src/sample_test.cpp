@@ -237,13 +237,9 @@ TEST(RatioOperator, division){
     Ratio r2(2,3);
     Ratio r3(3,4);
     Ratio r4=r1/r2;
-    //Ratio r5=r1*(r2.ratioPow(-1)); Ne fonctionne pas avec les puissances négatives
 
     ASSERT_EQ(r4.getNumerator(),r3.getNumerator());
     ASSERT_EQ(r4.getDenominator(),r3.getDenominator());
-    //ASSERT_EQ(r5.getNumerator(),r3.getNumerator());
-    //ASSERT_EQ(r5.getDenominator(),r3.getDenominator());
-
 
     // test on special cases
     Ratio inf = Ratio::infinity();
@@ -263,9 +259,16 @@ TEST(RatioOperator, ratioPow){
     Ratio r1(1,2);
     Ratio r2(1,4);
     Ratio r3=r1.ratioPow(2);
+    //Ratio r5=r1*(r2.ratioPow(-1)); Ne fonctionne pas avec les puissances négatives
 
     ASSERT_EQ(r3.getNumerator(),r2.getNumerator());
     ASSERT_EQ(r3.getDenominator(),r2.getDenominator());
+    //ASSERT_EQ(r5.getNumerator(),r3.getNumerator());
+    //ASSERT_EQ(r5.getDenominator(),r3.getDenominator());
+
+    Ratio r14 = r1.ratioPow(2, 2);
+    
+    ASSERT_EQ(r14 == Ratio(1, 16), true);
 
     // test on special cases
     Ratio inf = Ratio::infinity();
@@ -345,6 +348,9 @@ TEST(RatioComparison, Equal){
     ASSERT_EQ(r1==r2,true);
     ASSERT_EQ(r1.getNumerator(),r2.getNumerator());
     ASSERT_EQ(r1.getDenominator(),r2.getDenominator());
+
+    ASSERT_EQ(Ratio(5, 2)==2.5,true);
+    ASSERT_EQ(2.5==Ratio(5, 2),true);
 }
 
 TEST(RatioComparison, NotEqual){
@@ -352,6 +358,9 @@ TEST(RatioComparison, NotEqual){
     Ratio r2(-r1);
 
     ASSERT_EQ(r1!=r2,true);
+
+    ASSERT_EQ(Ratio(3, 2)!=2.5,true);
+    ASSERT_EQ(0.5!=Ratio(3, 2),true);
 }
 
 TEST(RatioComparison, Less){
@@ -359,13 +368,19 @@ TEST(RatioComparison, Less){
     Ratio r2(-1,2);
 
     ASSERT_EQ(r2<r1,true);
+
+
+    ASSERT_EQ(r2<3.8,true);
+    ASSERT_EQ(-4.7<r1,true);
 }
 
 TEST(RatioComparison, Greater){
     Ratio r1(1,2);
     Ratio r2(-1,2);
 
-    ASSERT_EQ(r1>r2,true);
+    ASSERT_EQ(r1>r2,true);    
+
+    ASSERT_EQ(3>r2,true);
 }
 
 /////////////////////////////////////////////////////
