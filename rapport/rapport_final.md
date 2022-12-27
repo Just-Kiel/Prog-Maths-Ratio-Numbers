@@ -27,15 +27,25 @@ Les attributs de notre class sont donc :
 
 $\frac{a}{b}+\frac{c}{d}=\frac{ad+cb}{cd}$
 
-<strong>WARNING</strong> : ne pas avoir de dénominateur égal à 0.
-
-$\frac{\frac{x}{1}}{x - y}$	
+<strong>WARNING</strong> : ne pas avoir de dénominateur égal à 0
 
 #### 2. Soustraction
+
+$\frac{a}{b}+(-\frac{c}{d})=\frac{ad+(-c)b}{cd}$
+
+<strong>WARNING</strong> : ne pas avoir de dénominateur égal à 0, on utilise l’opérateur rationnel + et le moins unaire -
+
 #### 3. Moins Unaire
+
+$-\frac{a}{b}=\frac{-a}{b}$
+
+<strong>WARNING</strong> : ne pas avoir de dénominateur égal à 0
+
 #### 4. Produit
 #### 5. Inverse
 #### 6. Division
+$\frac{\frac{x}{1}}{x - y}$	
+
 #### 7. Valeur Absolue
 #### 8. Partie Entière
 #### 9. Puissance
