@@ -25,9 +25,8 @@ Les attributs de notre class sont donc :
 ### B. Opérateurs
 #### 1. Somme
 
-<font size="5px">
 $\frac{a}{b}+\frac{c}{d}=\frac{ad+cb}{cd}$
-</font>
+
 <strong>WARNING</strong> : ne pas avoir de dénominateur égal à 0.
 
 $\frac{\frac{x}{1}}{x - y}$	
