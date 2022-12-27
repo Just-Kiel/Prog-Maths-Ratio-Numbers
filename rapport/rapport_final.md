@@ -148,6 +148,10 @@ c)
 
 ### D. Pour aller plus loin… Templetage et constexpr
 </br>
+Nous n’avons pas utilisé le constexpr car nous nous sommes retrouvées face à des problèmes à la compilation.
+Pour ce qui est de l’utilisation du template par contre, nous l’avons employé dans de nombreuses méthodes et notamment celle de conversion d’un réel vers un rationnel afin de pouvoir convertir un entier ou un nombre décimal.
+
+</br>
 </br>
 
 ## III. Réflexion mathématique avancée non implémentée
@@ -170,6 +174,32 @@ Les seules valeurs rationnelles que puisse prendre le cosinus ou le sinus d’un
 </br>
 
 ## IV. Analyse
+
+### A. Les questions du sujet
+
+</br>
+
+**<span style="color: #fd6c9e">1. Dans quels cas les nombres rationnels sont-ils efficaces ? Dans quels cas ne le sont-ils pas ?</span>**
+
+Les nombres rationnels sont efficaces si les nombres ne sont pas trop grands ou trop petits. En effet, les int et les unsigned int ne sont pas codés à l’infini et sont donc limités.
+Ils sont aussi efficaces quand on doit représenter certains réels avec un nombre de décimales infini (par exemple $\frac{1}{3}$).
+
+</br>
+
+**<span style="color: #fd6c9e"> 2. D’une façon générale, on peut s’apercevoir que les grands nombres
+(et le très petit nombre) se représentent assez mal avec notre classe de rationnels. Voyez-vous une explication à ça ?</span>**
+
+Comme dit plus tôt, les très grands nombres ainsi que les très petits seront compliqués à gérer en l’état puisque les entiers sont codés sur un nombre de bits limité. On se retrouverait donc dans certains cas avec des numérateurs et des dénominateurs tellement grands qu’il serait impossible de les coder en integer et unsigned integer.
+
+</br>
+
+**<span style="color: #fd6c9e">3. Lorsque les opérations entre rationnels s'enchaînent, le numérateur et le dénominateur peuvent prendre des valeurs très grandes, voire dépasser la limite de représentation des entiers en C++. Voyez-vous des solutions ?</span>**
+
+Pour éviter d’être limité dans la représentation d’entiers, on pourrait choisir d’utiliser des long int par exemple. Cela permettrait d’avoir plus de possibilités mais cela serait aussi largement plus demandeur en terme de mémoire. Il faudrait donc que le type de variable soit adaptatif à la situation.
+
+Une autre solution aurait été de garder la partie entière d’un côté et de ne travailler qu’avec la partie décimale. Cela résoudrait une part du problème (pour les très grands nombres). Il faudrait pour cela avoir un attribut conservant la partie entière. Cela n’a pas été implémenté mais cela aurait pu être une solution.
+
+
 </br>
 </br>
 
