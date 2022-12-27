@@ -115,7 +115,6 @@ Une autre façon de calculer la racine carrée d’un rationnel serait d’utili
 Malheureusement, nous n’avons pas implémenté la fonction puissance pour qu’elle fonctionne avec des puissances rationnelles, uniquement avec des puissances entières.
 
 Nous avons tout de même implémenté l’opérateur ainsi que réalisé les tests unitaires mais ces derniers ne fonctionnent que pour des racines de nombres entiers non premiers et donc la racine est un entier.
-
 <br/>
 <br/>
 
@@ -125,5 +124,27 @@ Nous avons tout de même implémenté l’opérateur ainsi que réalisé les tes
 std::ostream& operator<<(std::ostream& os, const Ratio &r) ;
 ````
 Ici, on va créer une surcharge d’opérateur sur un opérateur d’affichage et non un opérateur mathématiques. On va surcharger un opérateur de la librairie std ostream. Le paramètre os renvoie à ce qui va venir avant les <<, la surcharge << fait le lien entre le mot d’appel "coût" et notre choix d’affichage de rationnel. A savoir “cout”, le mot qui va permettre l’affichage de nos rationnels. Surcharger << nous permet de choisir la façon dont on va afficher nos rationnels à savoir : a/b ainsi que l’équivalent en nombre réel. Cette surcharge d’opérateur ne sera pas implémentée à l’intérieur de la classe car elle n’est pas une méthode propre à la classe, ce n’est pas un opérateur de type Ratio.
+<br/>
+<br/>
 
+En plus des opérateurs explicités ci-dessus, nous avons également surchargé des opérateurs d’assignation comme +=, -=, *= et des opérateurs de type comparaison (/=, <, >, <=, >=) qui ont été templaté pour être utilisés avec autre chose que des rationnels.
+</br>
+</br>
+
+### C. Approximation et Conversion
+**1. Nombre approximé ou non**
+
+Une bonne façon d’améliorer notre code serait de créer des fonctions d’approximation. L’une pourrait nous dire si le résultat d’un calcul est approximatif ou non et une autre qui pourrait approximer un résultat plutôt que de renvoyer une erreur. 
+Par exemple, si l’on prend le cas de l’opérateur racine carré. Une telle fonction pourrait renvoyer un résultat approximatif de $\sqrt{2}$ en convertissant le résultat en float au lieu de renvoyer une erreur.
+</br>
+</br>
+
+**2. Conversion réél-ratio**
+a)
+b)
+c)
+</br>
+</br>
+
+### D. Pour aller plus loin… Templetage et constexpr
 
