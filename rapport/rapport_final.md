@@ -164,7 +164,6 @@ Les seules valeurs rationnelles que puisse prendre le cosinus ou le sinus d’un
 | cos | 1 |        -        |        -        |  $\frac{1}{2}$  |        0        |   0   |
 
 </br>
-</br>
 
 ### B. Exponentielle et logarithme
 </br>
