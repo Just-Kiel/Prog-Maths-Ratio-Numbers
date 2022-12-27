@@ -140,9 +140,29 @@ Par exemple, si l’on prend le cas de l’opérateur racine carré. Une telle f
 </br>
 
 **2. Conversion réél-ratio**
-a)
-b)
-c)
+</br>
+
+**<span style="color: #fd6c9e">a) Pour les nombres réels positifs ou nuls</span>**
+
+En prenant l’algorithme donné dans le sujet, ce cas était déjà traité. Afin de l’étendre, nous avons décidé d’utiliser des templates afin de pouvoir reconnaitre si la valeur passait était un nombre entier ou décimal (cela permettait ainsi de gagner du temps à la compilation). Par exemple, pour un nombre entier pas besoin de faire tout l’algorithme, il suffisait juste de créer un ratio avec la valeur comme numérateur.
+
+</br>
+
+**<span style="color: #fd6c9e">b) Pour les nombres réels négatifs</span>**
+
+Pour ce qui est de la partie négative des nombres, l’algorithme n’a pas été très compliqué à changer. En effet, il a juste fallu rajouter une condition mentionnant que si la valeur était négative il fallait alors calculer la conversion avec la valeur absolue de la valeur et appliquer le moins unitaire au dernier moment.</br>
+Pseudo code : </br>
+
+```
+Si valeur < 0:
+Alors - (conversionReelVersRatio(abs(valeur)));
+```
+
+</br>
+
+**<span style="color: #fd6c9e">c) Analyse de l’algorithme page 4 du sujet</span>**
+
+Pour ce qui est du nombre d’itérations sur l’algorithme, nous avons décidé de partir sur 6, car après plusieurs tests, ce chiffre a semblé concluant pour calculer les 9 premières décimales de PI et ainsi obtenir le PI de notre classe Ratio. Cela nous ait donc semblé être une bonne idée de rester sur le même chiffre pour garder le même ordre de précision.
 </br>
 </br>
 
