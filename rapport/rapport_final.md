@@ -23,10 +23,13 @@ Les attributs de notre class sont donc :
 </p>
 </br>
 </br>
+
 ### B. Opérateurs
 #### 1. Somme
 </br>
+
 \frac{a}{b}+\frac{c}{d}=\frac{ad+cb}{cd}
+
 </br>
 <strong>WARNING</strong> : ne pas avoir de dénominateur égal à 0.
 </br>
