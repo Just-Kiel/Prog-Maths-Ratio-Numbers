@@ -119,6 +119,11 @@ Nous avons tout de même implémenté l’opérateur ainsi que réalisé les tes
 <br/>
 <br/>
 
+***11. Fonction d’affichage (<<)***
 
+```
+std::ostream& operator<<(std::ostream& os, const Ratio &r) ;
+````
+Ici, on va créer une surcharge d’opérateur sur un opérateur d’affichage et non un opérateur mathématiques. On va surcharger un opérateur de la librairie std ostream. Le paramètre os renvoie à ce qui va venir avant les <<, la surcharge << fait le lien entre le mot d’appel "coût" et notre choix d’affichage de rationnel. A savoir “cout”, le mot qui va permettre l’affichage de nos rationnels. Surcharger << nous permet de choisir la façon dont on va afficher nos rationnels à savoir : a/b ainsi que l’équivalent en nombre réel. Cette surcharge d’opérateur ne sera pas implémentée à l’intérieur de la classe car elle n’est pas une méthode propre à la classe, ce n’est pas un opérateur de type Ratio.
 
 
