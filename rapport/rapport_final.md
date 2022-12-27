@@ -49,11 +49,18 @@ $\frac{a}{b}*\frac{c}{d}=\frac{ac}{bd}$
 
 #### 5. Inverse
 
-$(\frac{a}{b})^-(1)=\frac{b}{a}$
+$(\frac{a}{b})^{-1}=\frac{b}{a}$
 
+<strong>WARNING</strong> : ne pas avoir de dénominateur égal à 0
 
 #### 6. Division
-$\frac{\frac{x}{1}}{x - y}$	
+
+$\frac{\frac{a}{b}}{\frac{c}{d}}=\frac{a}{b}*\frac{d}{c}=\frac{a}{b}*inverse(\frac{c}{d})$	
+
+<strong>WARNING</strong> : ne pas avoir de dénominateur égal à 0, on va utiliser l’opérateur d’inverse vu précédemment. Dans les tests unitaires on testera deux méthodes, utiliser l’opérateur inverse surchargé pour les ratios et le produit classique en faisant l’inversion nous-même.
+Une exception est donc renvoyée si le ratio à diviser est divisé par le rationnel 0. L’opérateur puissance acceptant les puissance négative, on peut également calculer un inverse, une division avec la fonction puissance (^-1) .
+
+
 
 #### 7. Valeur Absolue
 #### 8. Partie Entière
