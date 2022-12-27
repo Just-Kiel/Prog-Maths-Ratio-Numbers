@@ -167,5 +167,15 @@ Les seules valeurs rationnelles que puisse prendre le cosinus ou le sinus d’un
 </br>
 
 ### B. Exponentielle et logarithme
+</br>
+</br>
 
+## IV. Analyse
+</br>
+</br>
+
+## V. Programmation
+
+Lien du Git](https://github.com/Just-Kiel/Prog-Maths-Ratio-Numbers){.btn .btn-success}
+  
 
