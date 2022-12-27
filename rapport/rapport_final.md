@@ -176,6 +176,12 @@ Les seules valeurs rationnelles que puisse prendre le cosinus ou le sinus d’un
 
 ## V. Programmation
 
-Lien du Git](https://github.com/Just-Kiel/Prog-Maths-Ratio-Numbers){.btn .btn-success}
-  
+[<span style="color: #fd6c9e">Cliquer ici pour aller sur la page Git du projet !</span> ](https://github.com/Just-Kiel/Prog-Maths-Ratio-Numbers)
 
+</br>
+</br>
+A venir, le tableau des tâches
+</br>
+</br>
+
+Pour que notre librairie soit facilement utilisable, nous avons réalisé un fichier d’exemple sur l’utilisation de cette dernière ainsi qu’une documentation Doxygen.
