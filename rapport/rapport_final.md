@@ -37,12 +37,21 @@ $\frac{a}{b}+(-\frac{c}{d})=\frac{ad+(-c)b}{cd}$
 
 #### 3. Moins Unaire
 
-$-\frac{a}{b}=\frac{-a}{b}$
+$-(\frac{a}{b})=\frac{-a}{b}$
 
 <strong>WARNING</strong> : ne pas avoir de dénominateur égal à 0
 
 #### 4. Produit
+
+$\frac{a}{b}*(\frac{c}{d})=\frac{ac}{bd}$
+
+<strong>WARNING</strong> : ne pas avoir de dénominateur égal à 0
+
 #### 5. Inverse
+
+$(\frac{a}{b})^-1=\frac{b}{a}$
+
+
 #### 6. Division
 $\frac{\frac{x}{1}}{x - y}$	
 
