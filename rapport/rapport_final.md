@@ -49,7 +49,7 @@ $\frac{a}{b}*\frac{c}{d}=\frac{ac}{bd}$
 
 #### 5. Inverse
 
-$(\frac{a}{b})^(-1)=\frac{b}{a}$
+$(\frac{a}{b})(^-1)=\frac{b}{a}$
 
 
 #### 6. Division
