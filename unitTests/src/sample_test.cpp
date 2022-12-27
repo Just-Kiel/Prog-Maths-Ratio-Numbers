@@ -107,6 +107,9 @@ TEST(RatioOperator, sum){
 
     Ratio r7 = r1 + 3 + r1;
     ASSERT_EQ(r7 == Ratio(8,2), true);
+
+    Ratio r8 = 3 + r1;
+    ASSERT_EQ(r8 == Ratio(7,2), true);
 }
 
 //subtraction test
@@ -259,12 +262,13 @@ TEST(RatioOperator, ratioPow){
     Ratio r1(1,2);
     Ratio r2(1,4);
     Ratio r3=r1.ratioPow(2);
-    //Ratio r5=r1*(r2.ratioPow(-1)); Ne fonctionne pas avec les puissances négatives
+
+    Ratio r7=r2.ratioPow(-1); 
 
     ASSERT_EQ(r3.getNumerator(),r2.getNumerator());
     ASSERT_EQ(r3.getDenominator(),r2.getDenominator());
-    //ASSERT_EQ(r5.getNumerator(),r3.getNumerator());
-    //ASSERT_EQ(r5.getDenominator(),r3.getDenominator());
+
+    ASSERT_EQ(r7 == 4, true);
 
     Ratio r14 = r1.ratioPow(2, 2);
     

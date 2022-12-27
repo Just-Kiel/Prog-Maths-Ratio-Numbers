@@ -285,6 +285,17 @@ Ratio Ratio::operator+(const T &value) const{
     return (*this) + rVal;
 }
 
+/// @brief Sum of a real and a ratio
+/// @param value is real value to add
+/// @param r is Ratio to add
+/// @return Ratio sum of two
+template <typename T>
+Ratio operator+(const T value, const Ratio &r){
+    static_assert(std::is_arithmetic_v<T>, "Ratio::operator+(value, ratio): invalid type of typename, should be a number, can't be a string or a char");
+
+    return r+value;
+}
+
 template <typename T>
 Ratio Ratio::operator-(const T &value) const{
     static_assert(std::is_arithmetic_v<T>, "Ratio::operator-(value): invalid type of typename, should be a number, can't be a string or a char");
@@ -294,6 +305,17 @@ Ratio Ratio::operator-(const T &value) const{
     return (*this) - rVal;
 }
 
+/// @brief Subtraction of a real and a ratio
+/// @param value is real value to subtract
+/// @param r is Ratio to subtract
+/// @return Ratio Subtraction of two
+template <typename T>
+Ratio operator-(const T value, const Ratio &r){
+    static_assert(std::is_arithmetic_v<T>, "Ratio::operator-(value, ratio): invalid type of typename, should be a number, can't be a string or a char");
+
+    return (-r)-(-value);
+}
+
 template <typename T>
 Ratio Ratio::operator/(const T &value) const{
     static_assert(std::is_arithmetic_v<T>, "Ratio::operator-(value): invalid type of typename, should be a number, can't be a string or a char");
@@ -301,6 +323,18 @@ Ratio Ratio::operator/(const T &value) const{
     Ratio rVal = convertRealToRatio(value);
 
     return (*this) / rVal;
+}
+
+/// @brief Division of a real and a ratio
+/// @param value is real value to divide
+/// @param r is Ratio to divide
+/// @return Ratio Division of two
+template <typename T>
+Ratio operator/(const T value, const Ratio &r){
+    static_assert(std::is_arithmetic_v<T>, "Ratio::operator/(value, ratio): invalid type of typename, should be a number, can't be a string or a char");
+
+    Ratio rVal = convertRealToRatio(value);
+    return rVal/r;
 }
 
 template <typename T>

@@ -119,8 +119,13 @@ Ratio Ratio::operator/(const Ratio &r) const
 Ratio Ratio::ratioPow(const int p) const
 {
     Ratio newRatio;
-    newRatio.m_numerator=pow((this->m_numerator),p);
-    newRatio.m_denominator=pow((this->m_denominator),p);
+    if(p>=0){
+        newRatio.m_numerator=pow((this->m_numerator),p);
+        newRatio.m_denominator=pow((this->m_denominator),p);
+    } else {
+        newRatio.m_numerator=pow(static_cast<int>(this->m_denominator),-p);
+        newRatio.m_denominator=pow((this->m_numerator),-p);
+    }
 
     // Check PGCD = 1 and convert if needed
     newRatio.convertToIrreducible(newRatio.getPGCD());
