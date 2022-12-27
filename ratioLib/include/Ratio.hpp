@@ -7,6 +7,35 @@
 #include <stdexcept>  // special exceptions
 #include <type_traits>
 
+// Doxygen menu
+/// \version 1.0
+/// \mainpage
+/// \image html logoIMAC.png
+/// \tableofcontents
+/// \section introduction_sec What for?
+/// Ratio is a super tool. Permits to have infinite decimal into easy to represent number.
+/// \section install_bigsec How to install
+/// \subsection dependencies_sec Dependencies
+/// \li nothing else
+/// \li Doxygen (if you want the documentation)
+/// \subsection install_sec Install with cmake (Linux)
+/// \li go to main dir
+/// \li mkdir build
+/// \li cd build
+/// \li cmake ..
+/// \li make
+/// \li make html
+/// \li The documentation is located in ratioLib/doc/html/index.html
+/// \subsection install_sec Install with cmake (Windows with Visual Studio Code)
+/// \li Open Project into Visual Studio Code
+/// \li Select html instead of ALL_BUILD
+/// \li Build with CMake Tools
+/// \section credits_sec Made by
+/// \li Aurore LAFAURIE
+/// \li Sarah N'GOTTA
+
+/// \class Ratio
+/// \brief class defining a ratio for mathematic operations.
 class Ratio
 {
 private:

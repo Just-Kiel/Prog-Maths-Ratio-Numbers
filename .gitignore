@@ -36,6 +36,6 @@ build
 .DS_Store
 
 # Avoid documentation for the moment
-doc
+html
 
 todo_aurore.md
