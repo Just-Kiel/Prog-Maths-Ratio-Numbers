@@ -18,10 +18,9 @@ Les attributs de notre class sont donc :
     <li>le numérateur comme integer (int),
     <li>le dénominateur comme integer non signé (unsigned int)
 </ul>
-</br>
+
 <p>Nous avons aussi envisagé d’ajouter un booléen permettant de savoir si le rationnel créé était approximé ou exact. Afin de coller au sujet, tous les rationnels générés ont un PGCD égal à 1 avec des méthodes de vérification.
 </p>
-</br>
 </br>
 
 ### B. Opérateurs
