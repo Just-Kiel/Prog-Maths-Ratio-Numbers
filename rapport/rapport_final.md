@@ -147,4 +147,25 @@ c)
 </br>
 
 ### D. Pour aller plus loin… Templetage et constexpr
+</br>
+</br>
+
+## III. Réflexion mathématique avancée non implémentée
+### A. Cosinus & Sinus
+
+Les seules valeurs rationnelles que puisse prendre le cosinus ou le sinus d’un angle rationnel sont 0 , 1 , -1, ${\frac{1}{2}}$ , ${-\frac{1}{2}}$ . Si on avait codé la surcharge de cet opérateur, on aurait dû spécifier des exceptions pour lesquelles l'usage de ces opérateurs n’était pas conseillé ou donner un résultat approximé.
+</br>
+</br>
+
+
+|     | 0 | $\frac{\Pi}{6}$ | $\frac{\Pi}{4}$ | $\frac{\Pi}{3}$ | $\frac{\Pi}{2}$ | $\Pi$ |
+|:---:|:-:|:---------------:|:---------------:|:---------------:|:---------------:|:-----:|
+| sin | 0 |  $\frac{1}{2}$  |        -        |        -        |        1        |   -1  |
+| cos | 1 |        -        |        -        |  $\frac{1}{2}$  |        0        |   0   |
+
+</br>
+</br>
+
+### B. Exponentielle et logarithme
+
 
