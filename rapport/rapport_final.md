@@ -184,8 +184,8 @@ Les seules valeurs rationnelles que puisse prendre le cosinus ou le sinus d’un
 
 |     | 0 | $\frac{\Pi}{6}$ | $\frac{\Pi}{4}$ | $\frac{\Pi}{3}$ | $\frac{\Pi}{2}$ | $\Pi$ |
 |:---:|:-:|:---------------:|:---------------:|:---------------:|:---------------:|:-----:|
-| sin | 0 |  $\frac{1}{2}$  |        -        |        -        |        1        |   -1  |
-| cos | 1 |        -        |        -        |  $\frac{1}{2}$  |        0        |   0   |
+| sin | 0 |  $\frac{1}{2}$  |        -        |        -        |        1        |   0  |
+| cos | 1 |        -        |        -        |  $\frac{1}{2}$  |        0        |   -1   |
 
 </br>
 

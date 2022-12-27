@@ -213,3 +213,28 @@ bool operator<= (const Ratio& r1, const Ratio& r2){
 bool operator>= (const Ratio& r1, const Ratio& r2){
     return !(r1<r2);
 }
+
+
+
+// Trigonometry Operations
+Ratio cos(const Ratio& ratio){
+    // is approximate
+    float realRatio = convertRatioToReal<float>(ratio);
+
+    float cosValue = std::cosf(realRatio);
+
+    return convertRealToRatio<float>(cosValue);
+}
+
+Ratio sin(const Ratio& ratio){
+    // is approximate
+    float realRatio = convertRatioToReal<float>(ratio);
+
+    float sinValue = std::sinf(realRatio);
+
+    return convertRealToRatio<float>(sinValue);
+}
+
+Ratio tan(const Ratio& ratio){
+    return sin(ratio)/cos(ratio);
+}

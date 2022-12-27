@@ -429,6 +429,70 @@ TEST(RatioConversion, RatioToReal){
     ASSERT_EQ(v2 == 3,true);
 }
 
+//////////////////////////////////////////////////////
+// trigonometry operations
+TEST(RatioTrigonometry, Cosinus){
+    Ratio r1 = cos(Ratio());
+
+    ASSERT_EQ(r1 == 1,true);
+    
+    Ratio r2 = cos(Ratio::pi()/3);
+
+    ASSERT_NEAR(convertRatioToReal<float>(r2),0.5, 0.01);
+
+    Ratio r3 = cos(Ratio::pi()/2);
+    
+    ASSERT_NEAR(convertRatioToReal<float>(r3),0, 0.01);
+    
+    Ratio r4 = cos(Ratio::pi());
+    
+    ASSERT_NEAR(convertRatioToReal<float>(r4),-1, 0.01);
+
+    Ratio r5 = cos(Ratio::pi()/6);
+    
+    ASSERT_NEAR(convertRatioToReal<float>(r5),0.86, 0.01);
+
+    Ratio r6 = cos(Ratio::pi()*5/6);
+    
+    ASSERT_NEAR(convertRatioToReal<float>(r6),-0.86, 0.01);
+}
+
+TEST(RatioTrigonometry, Sinus){
+    Ratio r1 = sin(Ratio());
+
+    ASSERT_EQ(r1 == 0,true);
+    
+    Ratio r2 = sin(Ratio::pi()/3);
+
+    ASSERT_NEAR(convertRatioToReal<float>(r2),0.86, 0.01);
+
+    Ratio r3 = sin(Ratio::pi()/2);
+    
+    ASSERT_NEAR(convertRatioToReal<float>(r3),1, 0.01);
+    
+    Ratio r4 = sin(Ratio::pi());
+    
+    ASSERT_NEAR(convertRatioToReal<float>(r4),0, 0.01);
+
+    Ratio r5 = sin(Ratio::pi()/6);
+    
+    ASSERT_NEAR(convertRatioToReal<float>(r5),0.5, 0.01);
+
+    Ratio r6 = sin(Ratio::pi()*5/6);
+    
+    ASSERT_NEAR(convertRatioToReal<float>(r6),0.5, 0.01);
+}
+
+TEST(RatioTrigonometry, Tangent){
+    Ratio r1 = tan(Ratio());
+
+    ASSERT_EQ(r1 == 0,true);
+    
+    Ratio r2 = tan(Ratio::pi()/6);
+
+    ASSERT_NEAR(convertRatioToReal<float>(r2),0.57, 0.01);
+}
+
 /////////////////////////////////////////////////////
 // exceptions
 

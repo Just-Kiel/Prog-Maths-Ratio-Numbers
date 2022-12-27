@@ -45,20 +45,34 @@ private:
     ///////// methods
     /// @brief Calculate PGCD (important to know if we have a rational number)
     /// @return Value of PGCD between numerator and denominator
-    /// @todo Check if can be inline or not
     const int getPGCD();
 
 public:
+    /// @brief Default Constructor
+    /// @param numerator is by default 0
+    /// @param denominator is by default 1
     Ratio(const int numerator = 0, const unsigned int denominator = 1);
+
+    /// @brief Copy Constructor
+    /// @param r is the ratio to copy
     Ratio(const Ratio& r);
 
+    /// @brief Constructor by value
+    /// @param v is the value to convert
     template <typename T>
     Ratio(const T& v);
 
+    /// \brief destructor
+	~Ratio() = default;
+
+    /// @brief Getter of denominator
+    /// @return unsigned int of denominator
     inline unsigned int getDenominator() const {
 		return m_denominator;
 	}
     
+    /// @brief Getter of numerator
+    /// @return int of numerator
     inline int getNumerator() const {
 		return m_numerator;
 	}
@@ -69,7 +83,6 @@ public:
     friend std::ostream& operator<<(std::ostream& os, const Ratio &r) ;
 
     /// @brief If PGCD is not 1, need to divide each by PGCD to obtain rational number
-    /// @todo Check if can be inline or not because idk
     const void convertToIrreducible(const int pgcd);
 
     /// @brief Permit to have infinity in rational number
@@ -247,6 +260,26 @@ public:
     /// @return Real number of the type wanted
     template <typename T>
     friend T convertRatioToReal(const Ratio& ratio);
+
+    /// Trigonometry operations
+    // cos
+    /// @brief Cosinus of a ratio
+    /// @param ratio is the ratio to use 
+    /// @return Ratio value of cosinus
+    friend Ratio cos(const Ratio& ratio);
+
+    // sin
+    /// @brief Sinus of a ratio
+    /// @param ratio is the ratio to use
+    /// @return Ratio value of sinus
+    friend Ratio sin(const Ratio& ratio);
+    
+    // tan
+    /// @brief Tangent of a ratio
+    /// @param ratio is the ratio to use
+    /// @return Ratio value of tangent
+    friend Ratio tan(const Ratio& ratio);
+
 };
 
 /// @brief Product of a real and a ratio
@@ -295,6 +328,10 @@ Ratio::Ratio(const T& v): m_numerator(convertRealToRatio(v).m_numerator), m_deno
     // if (typeid(v) == typeid(std::string) || typeid(v) == typeid(char))
     //     throw std::domain_error("Ratio::Ratio(value): invalid type of parameter, should be a number, can't be a string or a char");
     static_assert(std::is_arithmetic_v<T>, "Ratio::Ratio(value): invalid type of parameter, should be a number, can't be a string or a char");
+
+    const int pgcd = getPGCD();
+    if(pgcd != 1)
+        convertToIrreducible(pgcd);
 }
 
 template <typename T>
