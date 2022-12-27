@@ -29,8 +29,7 @@ Les attributs de notre class sont donc :
 
 <strong>WARNING</strong> : ne pas avoir de dénominateur égal à 0.
 
-\frac{\frac{x}{1}}{x - y}
-
+$\frac{\frac{x}{1}}{x - y}$	
 
 #### 2. Soustraction
 #### 3. Moins Unaire
