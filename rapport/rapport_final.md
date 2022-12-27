@@ -30,9 +30,9 @@ Les attributs de notre class sont donc :
 
 \frac{a}{b}+\frac{c}{d}=\frac{ad+cb}{cd}
 
-</br>
 <strong>WARNING</strong> : ne pas avoir de dénominateur égal à 0.
 </br>
+
 #### 2. Soustraction
 #### 3. Moins Unaire
 #### 4. Produit
