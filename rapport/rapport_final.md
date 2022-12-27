@@ -9,7 +9,7 @@
 
 ## II. Nombre Rationnel
 ### A. Class
-<br/>
+
 <p>Nous avons codés une classe Ratio à partir des consignes du sujet. Nous avons modifié quelques points.
 </p>
 Les attributs de notre class sont donc : 
@@ -21,16 +21,16 @@ Les attributs de notre class sont donc :
 
 <p>Nous avons aussi envisagé d’ajouter un booléen permettant de savoir si le rationnel créé était approximé ou exact. Afin de coller au sujet, tous les rationnels générés ont un PGCD égal à 1 avec des méthodes de vérification.
 </p>
-</br>
 
 ### B. Opérateurs
 #### 1. Somme
-</br>
 
 \frac{a}{b}+\frac{c}{d}=\frac{ad+cb}{cd}
 
 <strong>WARNING</strong> : ne pas avoir de dénominateur égal à 0.
-</br>
+
+\frac{\frac{x}{1}}{x - y}
+
 
 #### 2. Soustraction
 #### 3. Moins Unaire
