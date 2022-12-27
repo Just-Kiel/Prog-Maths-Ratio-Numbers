@@ -43,13 +43,13 @@ $-(\frac{a}{b})=\frac{-a}{b}$
 
 #### 4. Produit
 
-$\frac{a}{b}*(\frac{c}{d})=\frac{ac}{bd}$
+$\frac{a}{b}*\frac{c}{d}=\frac{ac}{bd}$
 
 <strong>WARNING</strong> : ne pas avoir de dénominateur égal à 0
 
 #### 5. Inverse
 
-$(\frac{a}{b})^-1=\frac{b}{a}$
+$(\frac{a}{b})^(-1)=\frac{b}{a}$
 
 
 #### 6. Division
