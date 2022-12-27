@@ -8,9 +8,9 @@
 <br/>
 
 ## II. Nombre Rationnel
-### A. Class
+### A. Classe
 
-<p>Nous avons codés une classe Ratio à partir des consignes du sujet. Nous avons modifié quelques points.
+<p>Nous avons codé une classe Ratio à partir des consignes du sujet. Nous avons modifié quelques points.
 </p>
 Les attributs de notre class sont donc : 
 </br>
@@ -23,60 +23,101 @@ Les attributs de notre class sont donc :
 </p>
 
 ### B. Opérateurs
-#### 1. Somme
+**1. Somme**
 
 $\frac{a}{b}+\frac{c}{d}=\frac{ad+cb}{cd}$
 
-<strong>WARNING</strong> : ne pas avoir de dénominateur égal à 0
+<u>WARNING</u> : ne pas avoir de dénominateur égal à 0
+<br/>
+<br/>
 
-#### 2. Soustraction
+**2. Soustraction**
 
 $\frac{a}{b}+(-\frac{c}{d})=\frac{ad+(-c)b}{cd}$
 
-<strong>WARNING</strong> : ne pas avoir de dénominateur égal à 0, on utilise l’opérateur rationnel + et le moins unaire -
+<u>WARNING</u> : ne pas avoir de dénominateur égal à 0, on utilise l’opérateur rationnel + et le moins unaire -
+<br/>
+<br/>
 
-#### 3. Moins Unaire
+**3. Moins Unaire**
 
 $-(\frac{a}{b})=\frac{-a}{b}$
 
-<strong>WARNING</strong> : ne pas avoir de dénominateur égal à 0
+<u>WARNING</u> : ne pas avoir de dénominateur égal à 0
+<br/>
+<br/>
 
-#### 4. Produit
+**4. Produit**
 
 $\frac{a}{b}*\frac{c}{d}=\frac{ac}{bd}$
 
-<strong>WARNING</strong> : ne pas avoir de dénominateur égal à 0
+<u>WARNING</u> : ne pas avoir de dénominateur égal à 0
+<br/>
+<br/>
 
-#### 5. Inverse
+**5. Inverse**
 
 $(\frac{a}{b})^{-1}=\frac{b}{a}$
 
-<strong>WARNING</strong> : ne pas avoir de dénominateur égal à 0
+<u>WARNING</u> : ne pas avoir de dénominateur égal à 0
+<br/>
+<br/>
 
-#### 6. Division
+**6. Division**
 
-$\frac{\frac{a}{b}}{\frac{c}{d}}=\frac{a}{b}*\frac{d}{c}=\frac{a}{b}*inverse(\frac{c}{d})$	
+$\frac{\frac{a}{b}}{\frac{c}{d}}=\frac{a}{b}*\frac{d}{c}=\frac{a}{b}*inverse(\frac{c}{d})=\frac{ad}{bc}$	
 
-<strong>WARNING</strong> : ne pas avoir de dénominateur égal à 0, on va utiliser l’opérateur d’inverse vu précédemment. Dans les tests unitaires on testera deux méthodes, utiliser l’opérateur inverse surchargé pour les ratios et le produit classique en faisant l’inversion nous-même.
+<u>WARNING</u> : ne pas avoir de dénominateur égal à 0, on va utiliser l’opérateur d’inverse vu précédemment. Dans les tests unitaires on testera deux méthodes, utiliser l’opérateur inverse surchargé pour les ratios et le produit classique en faisant l’inversion nous-même.
 Une exception est donc renvoyée si le ratio à diviser est divisé par le rationnel 0. L’opérateur puissance acceptant les puissance négative, on peut également calculer un inverse, une division avec la fonction puissance (^-1) .
-
-
-
-#### 7. Valeur Absolue
-#### 8. Partie Entière
-#### 9. Puissance
-#### 10. Racine Carrée
-
-
-
-
-$\frac{\frac{a}{b}}{\frac{c}{d}}$=$\frac{a}{b}$ x $\frac{d}{c}$=$\frac{ad}{bc}$</font>
 <br/>
 <br/>
 
+**7. Valeur Absolue**
+
+$\frac{a}{b}=\frac{a}{b}$ ou $\frac{-a}{b} = \frac{a}{b}$
+
+<u>WARNING</u> : ne pas avoir de dénominateur égal à 0, on utilise l’opérateur abs de base prévu dans la librairie cmath. 
+<br/>
 <br/>
 
+***8. Partie Entière***
 
+$\frac{a}{b}=int(\frac{a}{b})$
+
+<u>WARNING</u> : ne pas avoir de dénominateur égal à 0, bien penser à faire un static_cast < int > du dénominateur afin de pouvoir faire l’opération.
+<br/>
+<br/>
+
+***9. Puissance***
+
+$(\frac{a}{b})^k=\frac{a^k}{b^k}$
+
+<u>WARNING</u> :  ne pas avoir de dénominateur égal à 0, on va également surcharger cet opérateur uniquement pour les puissances entières et non pour les puissances rationnelles. Cependant, on a pensé à des opérateurs qui pourraient avoir besoin d’une surcharge de l’opérateur puissance valable pour des puissances rationnelles. C’est le cas de l’opérateur racine carrée.
+<br/>
+<br/>
+
+***10. Racine Carrée***
+
+$\sqrt{\frac{a}{b}}=\frac{\sqrt{a}}{\sqrt{b}}$
+
+<u>WARNING</u> :  ne pas avoir de dénominateur égal à 0, on utilise l’opérateur sqrt de base prévu dans la librairie cmath. 
+
+Ma piste d’analyse au sujet de l’opérateur racine carrée pour des nombres rationnels est que cet opérateur ne pourra pas fonctionner pour : 
+
+* des nombres entiers qui mis sous racine carrée ne donne pas en résultat un nombre entier (ex : ne fonctionne pas pour sqrt(2) mais fonctionne pour sqrt(9)=3). Lorsque ça ne fonctionne pas, on ne pourra jamais obtenir de fraction entière, seulement des approximations. 
+
+* une autre approche, serait de dire que l’opérateur ne fonctionnera pas sur les nombres premiers et nombres entiers décomposables en nombres premiers (ex : ne fonctionnera pas pour 2, 3 et 6. En effet, 2 et 3 sont des nombres premiers et 6=2*3, elles se décomposent en produit de nombre premier, passé sous racine, le résultat ne sera pas un nombre entier).
+
+_Pour le moment la fonction d’approximation n’est pas implémentée. On aura donc un message d’erreur si le calcul comprend les exceptions précédentes._
+
+Une autre façon de calculer la racine carrée d’un rationnel serait d’utiliser l’opérateur rationnel de puissance. Ainsi : $\sqrt{\frac{a}{b}}=(\frac{a}{b})^{\frac{1}{2}}$
+
+Malheureusement, nous n’avons pas implémenté la fonction puissance pour qu’elle fonctionne avec des puissances rationnelles, uniquement avec des puissances entières.
+
+Nous avons tout de même implémenté l’opérateur ainsi que réalisé les tests unitaires mais ces derniers ne fonctionnent que pour des racines de nombres entiers non premiers et donc la racine est un entier.
+
+<br/>
+<br/>
 
 
 
