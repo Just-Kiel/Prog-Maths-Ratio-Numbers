@@ -83,5 +83,12 @@ int main(int argc, char const *argv[])
     r3 /=2;
     std::cout<<"My Ratio r3 is : "<<r3<<std::endl;
 
+
+
+    // How to do trigonometry operations ?
+    std::cout<<"Cos of (PI/6) = "<<cos(Ratio::pi()/6)<<std::endl;
+    std::cout<<"Sin of (PI/6) = "<<sin(Ratio::pi()/6)<<std::endl;
+    std::cout<<"Tan of (PI/6) = "<<tan(Ratio::pi()/6)<<std::endl;
+
     return 0;
 }

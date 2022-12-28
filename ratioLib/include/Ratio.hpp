@@ -265,19 +265,19 @@ public:
     // cos
     /// @brief Cosinus of a ratio
     /// @param ratio is the ratio to use 
-    /// @return Ratio value of cosinus
+    /// @return Ratio approximation value of cosinus
     friend Ratio cos(const Ratio& ratio);
 
     // sin
     /// @brief Sinus of a ratio
     /// @param ratio is the ratio to use
-    /// @return Ratio value of sinus
+    /// @return Ratio approximation value of sinus
     friend Ratio sin(const Ratio& ratio);
     
     // tan
     /// @brief Tangent of a ratio
     /// @param ratio is the ratio to use
-    /// @return Ratio value of tangent
+    /// @return Ratio approximation value of tangent
     friend Ratio tan(const Ratio& ratio);
 
 };
