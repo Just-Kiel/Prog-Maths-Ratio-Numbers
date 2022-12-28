@@ -80,7 +80,7 @@ $\frac{a}{b}=\frac{a}{b}$ ou $\frac{-a}{b} = \frac{a}{b}$
 <br/>
 <br/>
 
-***8. Partie Entière***
+**8. Partie Entière**
 
 $\frac{a}{b}=int(\frac{a}{b})$
 
@@ -88,7 +88,7 @@ $\frac{a}{b}=int(\frac{a}{b})$
 <br/>
 <br/>
 
-***9. Puissance***
+**9. Puissance**
 
 $(\frac{a}{b})^k=\frac{a^k}{b^k}$
 
@@ -96,7 +96,7 @@ $(\frac{a}{b})^k=\frac{a^k}{b^k}$
 <br/>
 <br/>
 
-***10. Racine Carrée***
+**10. Racine Carrée**
 
 $\sqrt{\frac{a}{b}}=\frac{\sqrt{a}}{\sqrt{b}}$
 
@@ -118,7 +118,7 @@ Nous avons tout de même implémenté l’opérateur ainsi que réalisé les tes
 <br/>
 <br/>
 
-***11. Fonction d’affichage (<<)***
+**11. Fonction d’affichage (<<)**
 
 ```
 std::ostream& operator<<(std::ostream& os, const Ratio &r) ;
@@ -126,6 +126,20 @@ std::ostream& operator<<(std::ostream& os, const Ratio &r) ;
 Ici, on va créer une surcharge d’opérateur sur un opérateur d’affichage et non un opérateur mathématiques. On va surcharger un opérateur de la librairie std ostream. Le paramètre os renvoie à ce qui va venir avant les <<, la surcharge << fait le lien entre le mot d’appel "coût" et notre choix d’affichage de rationnel. A savoir “cout”, le mot qui va permettre l’affichage de nos rationnels. Surcharger << nous permet de choisir la façon dont on va afficher nos rationnels à savoir : a/b ainsi que l’équivalent en nombre réel. Cette surcharge d’opérateur ne sera pas implémentée à l’intérieur de la classe car elle n’est pas une méthode propre à la classe, ce n’est pas un opérateur de type Ratio.
 <br/>
 <br/>
+
+**12. Cos, Sin & Tan**
+
+Les seules valeurs rationnelles que puisse prendre le cosinus ou le sinus d’un angle rationnel sont 0 , 1 , -1, ${\frac{1}{2}}$ , ${-\frac{1}{2}}$ . Si on avait codé la surcharge de cet opérateur, on aurait dû spécifier des exceptions pour lesquelles l'usage de ces opérateurs n’était pas conseillé ou donner un résultat approximé.
+</br>
+</br>
+
+
+|     | 0 | $\frac{\Pi}{6}$ | $\frac{\Pi}{4}$ | $\frac{\Pi}{3}$ | $\frac{\Pi}{2}$ | $\Pi$ |
+|:---:|:-:|:---------------:|:---------------:|:---------------:|:---------------:|:-----:|
+| sin | 0 |  $\frac{1}{2}$  |        -        |        -        |        1        |   0  |
+| cos | 1 |        -        |        -        |  $\frac{1}{2}$  |        0        |   -1   |
+
+</br>
 
 En plus des opérateurs explicités ci-dessus, nous avons également surchargé des opérateurs d’assignation comme +=, -=, *= et des opérateurs de type comparaison (/=, <, >, <=, >=) qui ont été templaté pour être utilisés avec autre chose que des rationnels.
 </br>
@@ -175,21 +189,7 @@ Pour ce qui est de l’utilisation du template par contre, nous l’avons employ
 </br>
 
 ## III. Réflexion mathématique avancée non implémentée
-### A. Cosinus & Sinus
-
-Les seules valeurs rationnelles que puisse prendre le cosinus ou le sinus d’un angle rationnel sont 0 , 1 , -1, ${\frac{1}{2}}$ , ${-\frac{1}{2}}$ . Si on avait codé la surcharge de cet opérateur, on aurait dû spécifier des exceptions pour lesquelles l'usage de ces opérateurs n’était pas conseillé ou donner un résultat approximé.
-</br>
-</br>
-
-
-|     | 0 | $\frac{\Pi}{6}$ | $\frac{\Pi}{4}$ | $\frac{\Pi}{3}$ | $\frac{\Pi}{2}$ | $\Pi$ |
-|:---:|:-:|:---------------:|:---------------:|:---------------:|:---------------:|:-----:|
-| sin | 0 |  $\frac{1}{2}$  |        -        |        -        |        1        |   0  |
-| cos | 1 |        -        |        -        |  $\frac{1}{2}$  |        0        |   -1   |
-
-</br>
-
-### B. Exponentielle et logarithme
+### Exponentielle et logarithme
 </br>
 </br>
 
