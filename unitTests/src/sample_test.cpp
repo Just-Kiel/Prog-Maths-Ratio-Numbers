@@ -375,7 +375,7 @@ TEST(RatioComparison, Less){
 
 
     ASSERT_EQ(r2<3.8,true);
-    ASSERT_EQ(Ratio(-4.5)<r1,true);
+    ASSERT_EQ(-4.5<r1,true);
     ASSERT_EQ(0.3<r1,true);
 }
 
@@ -492,6 +492,13 @@ TEST(RatioTrigonometry, Tangent){
     Ratio r2 = tan(Ratio::pi()/6);
 
     ASSERT_NEAR(convertRatioToReal<float>(r2),0.57, 0.01);
+}
+
+/////////////////////////////////////////////////////
+// Exponential and Logarithm
+TEST(RatioExpAndLog, Exp){
+    // Test not perfect but work
+    ASSERT_EQ(exp(Ratio(0)) == 1,true);
 }
 
 /////////////////////////////////////////////////////

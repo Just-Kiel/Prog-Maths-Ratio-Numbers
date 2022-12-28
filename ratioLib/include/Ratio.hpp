@@ -280,6 +280,18 @@ public:
     /// @return Ratio approximation value of tangent
     friend Ratio tan(const Ratio& ratio);
 
+    /// Exponential and Logarithm
+    /// @brief Exponential of a ratio templated
+    /// @param value is the value to use
+    /// @return Ratio approximation value of exponential
+    template <typename T>
+    friend Ratio exp(const T& value);
+
+    /// @brief Exponential of a ratio
+    /// @param ratio is the value to use
+    /// @return Ratio approximation value of exponential
+    friend Ratio exp(const Ratio& ratio);
+
 };
 
 /// @brief Product of a real and a ratio
@@ -444,4 +456,12 @@ Ratio& Ratio::operator/=(const T &value){
 template <typename ... Args>
 Ratio Ratio::ratioPow(const int p, const Args ...args) const{
     return this->ratioPow(p).ratioPow(args...);
+}
+
+/// Exp and log
+template <typename T>
+Ratio exp(const T& value){
+    static_assert(std::is_arithmetic_v<T>, "exp(value): invalid type of parameter, value should be a number, can't be a string or a char");
+
+    return Ratio(std::exp(value));
 }

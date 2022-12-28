@@ -238,3 +238,8 @@ Ratio sin(const Ratio& ratio){
 Ratio tan(const Ratio& ratio){
     return sin(ratio)/cos(ratio);
 }
+
+/// Exp and log
+Ratio exp(const Ratio& ratio){
+    return exp(convertRatioToReal<float>(ratio));
+}
