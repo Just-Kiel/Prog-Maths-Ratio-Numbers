@@ -375,7 +375,8 @@ TEST(RatioComparison, Less){
 
 
     ASSERT_EQ(r2<3.8,true);
-    ASSERT_EQ(-4.7<r1,true);
+    ASSERT_EQ(Ratio(-4.5)<r1,true);
+    ASSERT_EQ(0.3<r1,true);
 }
 
 TEST(RatioComparison, Greater){
