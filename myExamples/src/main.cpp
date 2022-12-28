@@ -90,5 +90,10 @@ int main(int argc, char const *argv[])
     std::cout<<"Sin of (PI/6) = "<<sin(Ratio::pi()/6)<<std::endl;
     std::cout<<"Tan of (PI/6) = "<<tan(Ratio::pi()/6)<<std::endl;
 
+    // How to obtain an exponential or a logarithm in ratio ?
+    std::cout<<"Exponential of (1) = "<<exp(Ratio(1))<<std::endl;
+    // Approximation due to conversion to float
+    std::cout<<"Logarithm of line above = "<<log(exp(Ratio(1)))<<std::endl;
+
     return 0;
 }
