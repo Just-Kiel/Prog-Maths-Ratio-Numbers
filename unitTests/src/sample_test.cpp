@@ -501,6 +501,11 @@ TEST(RatioExpAndLog, Exp){
     ASSERT_EQ(exp(Ratio(0)) == 1,true);
 }
 
+TEST(RatioExpAndLog, Log){
+    // Test not perfect but work
+    ASSERT_EQ(log(Ratio(1)) == 0,true);
+}
+
 /////////////////////////////////////////////////////
 // exceptions
 

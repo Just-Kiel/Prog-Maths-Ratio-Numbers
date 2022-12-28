@@ -243,3 +243,7 @@ Ratio tan(const Ratio& ratio){
 Ratio exp(const Ratio& ratio){
     return exp(convertRatioToReal<float>(ratio));
 }
+
+Ratio log(const Ratio& ratio){
+    return log(convertRatioToReal<float>(ratio));
+}

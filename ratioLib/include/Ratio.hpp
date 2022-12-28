@@ -281,7 +281,7 @@ public:
     friend Ratio tan(const Ratio& ratio);
 
     /// Exponential and Logarithm
-    /// @brief Exponential of a ratio templated
+    /// @brief Exponential of a value templated
     /// @param value is the value to use
     /// @return Ratio approximation value of exponential
     template <typename T>
@@ -292,6 +292,16 @@ public:
     /// @return Ratio approximation value of exponential
     friend Ratio exp(const Ratio& ratio);
 
+    /// @brief Logarithm of a value templated
+    /// @param value is the value to use
+    /// @return Ratio approximation value of logarithm
+    template <typename T>
+    friend Ratio log(const T& value);
+
+    /// @brief Logarithm of a ratio
+    /// @param ratio is the value to use
+    /// @return Ratio approximation value of logarithm
+    friend Ratio log(const Ratio& ratio);
 };
 
 /// @brief Product of a real and a ratio
@@ -464,4 +474,14 @@ Ratio exp(const T& value){
     static_assert(std::is_arithmetic_v<T>, "exp(value): invalid type of parameter, value should be a number, can't be a string or a char");
 
     return Ratio(std::exp(value));
+}
+
+template <typename T>
+Ratio log(const T& value){
+    static_assert(std::is_arithmetic_v<T>, "log(value): invalid type of parameter, value should be a number, can't be a string or a char");
+
+    if (value <= static_cast<T>(0))
+        throw std::domain_error("log(value): invalid type of parameter, should be positive");
+
+    return Ratio(std::log(value));
 }
