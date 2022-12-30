@@ -242,7 +242,14 @@ Une autre solution aurait été de garder la partie entière d’un côté et de
 
 </br>
 </br>
-A venir, le tableau des tâches
+
+|                                                                                                                                      Demandé                                                                                                                                     |          Demandé          |        Demandé       |                                                 Pas demandé                                                 |         Pas demandé         |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------:|:--------------------|:-----------------------------------------------------------------------------------------------------------|:---------------------------|
+|                                                                                                                                codé et fonctionnel                                                                                                                               | codé mais pas fonctionnel |       pas codé       |                                             codé et fonctionnel                                             | pas codé ou pas fonctionnel |
+| [Ratio]   </br>* Numérateur (int)  (represented as a) Dénominateur (uint) (represented as b)</br> * ratios irreductibles </br>* 0=0/1 * infini=1/0 </br>* PI-> constexpr 103993/33102                                                                                                                |             -             | </br>* espaces de nommage | </br>* puissance</br> * racine carrée </br>* cosinus/sinus </br>* variadics (dans pow) </br>* exponentielle </br>* ln </br>* coder en template |     </br>  * class en constexpr    |
+| [Opérateurs]  </br>* Somme </br>* Produit </br>* Inverse </br>* Division </br>* Moins unaire </br>* Valeur Absolue </br>* Partie entière </br>* Produit reel-ratio/ratio-reel </br>* Opérateurs de comparaison (==, !=, >; <; <=, >=) </br>* Opérateur d’affichage << </br>* Conversion reel to ratio (aussi pour les nombres négatifs) |            -               |                      |                                                                                                             |          -                   |
+| </br>* Tests unitaires fonctionnels </br>* exemples </br>* documentation</br> * cmake </br>* readme </br>* classes </br>* usage stl </br>* exceptions </br>* asserts                                                                                                                                                          |               -            |                      |                                                                                                             |                             |
+
 </br>
 </br>
 
