@@ -1,14 +1,14 @@
 
 # RAPPORT FINAL PROJET MATH-INFO & PROG
 
-## I. INTRODUCTION
+## <span style="color: #32CBFF">I. INTRODUCTION</span>
 <br/>
 <p>Dans ce rapport, Aurore Lafaurie et Sarah N’GOTTA vont vous présenter leur travail de recherche et de programmation sur les nombres rationnels. Dans une première partie, la présentation de leur classe de rationnels, les surcharges d’opérateurs associées et des travaux plus approfondis sur les approximations, conversions de rationnels, templatage de fonction… Dans une deuxième partie axée sur les mathématiques, elles exposeront des travaux de recherches sur des fonctions mathématiques non implémentées dans la partie programmation. Dans une troisième basée sur l’analyse, elles traiteront des tests unitaires. Enfin, une partie succincte concernant la partie programmation, elles présenteront un tableau des tâches réalisées.
 </p>
 <br/>
 
-## II. Nombre Rationnel
-### A. Classe
+## <span style="color: #32CBFF">II. Nombre Rationnel</span>
+### <span style="color: #F9A620">A. Classe</span>
 
 <p>Nous avons codé une classe Ratio à partir des consignes du sujet. Nous avons modifié quelques points.
 </p>
@@ -22,8 +22,8 @@ Les attributs de notre class sont donc :
 <p>Nous avons aussi envisagé d’ajouter un booléen permettant de savoir si le rationnel créé était approximé ou exact. Afin de coller au sujet, tous les rationnels générés ont un PGCD égal à 1 avec des méthodes de vérification.
 </p>
 
-### B. Opérateurs
-**1. Somme**
+### <span style="color: #F9A620">B. Opérateurs</span>
+**<span style="color: #fd6c9e">1. Somme**</span>
 
 $\frac{a}{b}+\frac{c}{d}=\frac{ad+cb}{cd}$
 
@@ -31,7 +31,7 @@ $\frac{a}{b}+\frac{c}{d}=\frac{ad+cb}{cd}$
 <br/>
 <br/>
 
-**2. Soustraction**
+**<span style="color: #fd6c9e">2. Soustraction**</span>
 
 $\frac{a}{b}+(-\frac{c}{d})=\frac{ad+(-c)b}{cd}$
 
@@ -39,7 +39,7 @@ $\frac{a}{b}+(-\frac{c}{d})=\frac{ad+(-c)b}{cd}$
 <br/>
 <br/>
 
-**3. Moins Unaire**
+**<span style="color: #fd6c9e">3. Moins Unaire**</span>
 
 $-(\frac{a}{b})=\frac{-a}{b}$
 
@@ -47,7 +47,7 @@ $-(\frac{a}{b})=\frac{-a}{b}$
 <br/>
 <br/>
 
-**4. Produit**
+**<span style="color: #fd6c9e">4. Produit**</span>
 
 $\frac{a}{b}*\frac{c}{d}=\frac{ac}{bd}$
 
@@ -55,7 +55,7 @@ $\frac{a}{b}*\frac{c}{d}=\frac{ac}{bd}$
 <br/>
 <br/>
 
-**5. Inverse**
+**<span style="color: #fd6c9e">5. Inverse**</span>
 
 $(\frac{a}{b})^{-1}=\frac{b}{a}$
 
@@ -63,7 +63,7 @@ $(\frac{a}{b})^{-1}=\frac{b}{a}$
 <br/>
 <br/>
 
-**6. Division**
+**<span style="color: #fd6c9e">6. Division**</span>
 
 $\frac{\frac{a}{b}}{\frac{c}{d}}=\frac{a}{b}*\frac{d}{c}=\frac{a}{b}*inverse(\frac{c}{d})=\frac{ad}{bc}$	
 
@@ -72,7 +72,7 @@ Une exception est donc renvoyée si le ratio à diviser est divisé par le ratio
 <br/>
 <br/>
 
-**7. Valeur Absolue**
+**<span style="color: #fd6c9e">7. Valeur Absolue**</span>
 
 $\frac{a}{b}=\frac{a}{b}$ ou $\frac{-a}{b} = \frac{a}{b}$
 
@@ -80,7 +80,7 @@ $\frac{a}{b}=\frac{a}{b}$ ou $\frac{-a}{b} = \frac{a}{b}$
 <br/>
 <br/>
 
-**8. Partie Entière**
+**<span style="color: #fd6c9e">8. Partie Entière**</span>
 
 $\frac{a}{b}=int(\frac{a}{b})$
 
@@ -88,7 +88,7 @@ $\frac{a}{b}=int(\frac{a}{b})$
 <br/>
 <br/>
 
-**9. Puissance**
+**<span style="color: #fd6c9e">9. Puissance**</span>
 
 $(\frac{a}{b})^k=\frac{a^k}{b^k}$
 
@@ -96,7 +96,7 @@ $(\frac{a}{b})^k=\frac{a^k}{b^k}$
 <br/>
 <br/>
 
-**10. Racine Carrée**
+**<span style="color: #fd6c9e">10. Racine Carrée**</span>
 
 $\sqrt{\frac{a}{b}}=\frac{\sqrt{a}}{\sqrt{b}}$
 
@@ -118,7 +118,7 @@ Nous avons tout de même implémenté l’opérateur ainsi que réalisé les tes
 <br/>
 <br/>
 
-**11. Fonction d’affichage (<<)**
+**<span style="color: #fd6c9e">11. Fonction d’affichage (<<)</span>**
 
 ```
 std::ostream& operator<<(std::ostream& os, const Ratio &r) ;
@@ -127,7 +127,7 @@ Ici, on va créer une surcharge d’opérateur sur un opérateur d’affichage e
 <br/>
 <br/>
 
-**12. Cos, Sin & Tan**
+**<span style="color: #fd6c9e">12. Cos, Sin & Tan </span>**
 
 Les seules valeurs rationnelles que puisse prendre le cosinus ou le sinus d’un angle rationnel sont 0 , 1 , -1, ${\frac{1}{2}}$ , ${-\frac{1}{2}}$ . Si on avait codé la surcharge de cet opérateur, on aurait dû spécifier des exceptions pour lesquelles l'usage de ces opérateurs n’était pas conseillé ou donner un résultat approximé.
 </br>
@@ -141,28 +141,44 @@ Les seules valeurs rationnelles que puisse prendre le cosinus ou le sinus d’un
 
 </br>
 
-En plus des opérateurs explicités ci-dessus, nous avons également surchargé des opérateurs d’assignation comme +=, -=, *= et des opérateurs de type comparaison (/=, <, >, <=, >=) qui ont été templaté pour être utilisés avec autre chose que des rationnels.
+**<span style="color: #fd6c9e">13. Exponentielle et Logarithme Népérien</span>**
+
+Les fonction exponentielle et logarithme sont définies dans R et R*+, elles prennent donc en paramètre n’importe quel paramètre réel (positif non-nul pour la fonction ln), y compris des rationnels puisque R=QuQ’.
+
+Pour la fonction exponentielle, elle est définie dans tout le domaine des réels. Il n’y a donc pas d’exceptions à préciser pour les paramètres qui lui sont passés.
+
+Pour la fonction logarithme népérien, il faut faire attention, les paramètres passés à la fonction ne doivent pas être négatifs ou nuls. La fonction n’est  pas définie pour ces valeurs-ci. Il faudrait donc un message d’erreur. Pour une valeur infini, la fonction ln vaut l’infini. En 1, la fonction ln vaut 0.
+
+Les résultats de exp et de ln ne sont pas tous rationnels. Il faudrait donc approximer les résultats. Les résultats rationnels entiers dont nous sommes certains sont 1 pour exponentielle et 0 pour logarithme népérien. De plus, après quelques recherches nous avons pu trouver qu’une exponentielle d’un nombre rationnel est un nombre irrationnel. Nous avons donc commencé à coder une version simplifiée mais fonctionnelle.
+
+Une méthode très simple est de passer par des réels pour ensuite calculer et reconvertir.
+
+La réciproque de la fonction exp est la fonction ln et inversement. Peut-être serait-il possible de coder la fonction exp et de s’en servir pour coder la fonction ln en précisant les exceptions qui les différencient. 
 </br>
 </br>
 
-### C. Approximation et Conversion
-**1. Nombre approximé ou non**
+_En plus des opérateurs explicités ci-dessus, nous avons également surchargé des opérateurs d’assignation comme +=, -=, *= et des opérateurs de type comparaison (/=, <, >, <=, >=) qui ont été templaté pour être utilisés avec autre chose que des rationnels._
+</br>
+</br>
+
+### <span style="color: #F9A620"> C. Approximation et Conversion</span>
+**<span style="color: #fd6c9e">1. Nombre approximé ou non </span>**
 
 Une bonne façon d’améliorer notre code serait de créer des fonctions d’approximation. L’une pourrait nous dire si le résultat d’un calcul est approximatif ou non et une autre qui pourrait approximer un résultat plutôt que de renvoyer une erreur. 
 Par exemple, si l’on prend le cas de l’opérateur racine carré. Une telle fonction pourrait renvoyer un résultat approximatif de $\sqrt{2}$ en convertissant le résultat en float au lieu de renvoyer une erreur.
 </br>
 </br>
 
-**2. Conversion réél-ratio**
+**<span style="color: #fd6c9e">2. Conversion réél-ratio</span>**
 </br>
 
-**<span style="color: #fd6c9e">a) Pour les nombres réels positifs ou nuls</span>**
+**<span style="color: #548C2F">a) Pour les nombres réels positifs ou nuls</span>**
 
 En prenant l’algorithme donné dans le sujet, ce cas était déjà traité. Afin de l’étendre, nous avons décidé d’utiliser des templates afin de pouvoir reconnaitre si la valeur passait était un nombre entier ou décimal (cela permettait ainsi de gagner du temps à la compilation). Par exemple, pour un nombre entier pas besoin de faire tout l’algorithme, il suffisait juste de créer un ratio avec la valeur comme numérateur.
 
 </br>
 
-**<span style="color: #fd6c9e">b) Pour les nombres réels négatifs</span>**
+**<span style="color: #548C2F">b) Pour les nombres réels négatifs</span>**
 
 Pour ce qui est de la partie négative des nombres, l’algorithme n’a pas été très compliqué à changer. En effet, il a juste fallu rajouter une condition mentionnant que si la valeur était négative il fallait alors calculer la conversion avec la valeur absolue de la valeur et appliquer le moins unitaire au dernier moment.</br>
 Pseudo code : </br>
@@ -174,13 +190,13 @@ Alors - (conversionReelVersRatio(abs(valeur)));
 
 </br>
 
-**<span style="color: #fd6c9e">c) Analyse de l’algorithme page 4 du sujet</span>**
+**<span style="color: #548C2F">c) Analyse de l’algorithme page 4 du sujet</span>**
 
 Pour ce qui est du nombre d’itérations sur l’algorithme, nous avons décidé de partir sur 6, car après plusieurs tests, ce chiffre a semblé concluant pour calculer les 9 premières décimales de PI et ainsi obtenir le PI de notre classe Ratio. Cela nous ait donc semblé être une bonne idée de rester sur le même chiffre pour garder le même ordre de précision.
 </br>
 </br>
 
-### D. Pour aller plus loin… Templetage et constexpr
+### <span style="color: #F9A620">D. Pour aller plus loin… Templetage et constexpr</span>
 </br>
 Nous n’avons pas utilisé le constexpr car nous nous sommes retrouvées face à des problèmes à la compilation.
 Pour ce qui est de l’utilisation du template par contre, nous l’avons employé dans de nombreuses méthodes et notamment celle de conversion d’un réel vers un rationnel afin de pouvoir convertir un entier ou un nombre décimal.
@@ -188,14 +204,9 @@ Pour ce qui est de l’utilisation du template par contre, nous l’avons employ
 </br>
 </br>
 
-## III. Réflexion mathématique avancée non implémentée
-### Exponentielle et logarithme
-</br>
-</br>
+## <span style="color: #32CBFF">III. Analyse</span>
 
-## IV. Analyse
-
-### A. Les questions du sujet
+### <span style="color: #F9A620"> A. Les questions du sujet</span>
 
 </br>
 
@@ -223,7 +234,8 @@ Une autre solution aurait été de garder la partie entière d’un côté et de
 </br>
 </br>
 
-## V. Programmation
+## <span style="color: #32cbff">IV. Programmation
+</br>
 
 [<span style="color: #fd6c9e">Cliquer ici pour aller sur la page Git du projet !</span> ](https://github.com/Just-Kiel/Prog-Maths-Ratio-Numbers)
 
