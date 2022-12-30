@@ -129,7 +129,8 @@ Ici, on va créer une surcharge d’opérateur sur un opérateur d’affichage e
 
 **<span style="color: #fd6c9e">12. Cos, Sin & Tan </span>**
 
-Les seules valeurs rationnelles que puisse prendre le cosinus ou le sinus d’un angle rationnel sont 0 , 1 , -1, ${\frac{1}{2}}$ , ${-\frac{1}{2}}$ . Si on avait codé la surcharge de cet opérateur, on aurait dû spécifier des exceptions pour lesquelles l'usage de ces opérateurs n’était pas conseillé ou donner un résultat approximé.
+Les seules valeurs rationnelles que puisse prendre le cosinus ou le sinus d’un angle rationnel sont 0 , 1 , -1, ${\frac{1}{2}}$ , ${-\frac{1}{2}}$ . Si on avait codé la surcharge de cet opérateur, on aurait dû spécifier des exceptions pour lesquelles l'usage de ces opérateurs n’était pas conseillé ou donner un résultat approximé. En effet, on repasse par des nombres réels, la conversion reel-ratio est donc approximative.
+
 </br>
 </br>
 
