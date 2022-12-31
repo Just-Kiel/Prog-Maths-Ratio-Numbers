@@ -6,6 +6,7 @@
 
 #include <stdexcept>  // special exceptions
 #include <type_traits>
+#include <numeric>
 
 // Doxygen menu
 /// \version 1.0
@@ -193,13 +194,15 @@ public:
     /// @brief Pow Operator
     /// @param p is the power's degree
     /// @return Value of the ratio at power p (the result is a ratio)
-    Ratio ratioPow(const int p) const;
+    Ratio ratioPow(const int& p) const;
 
     /// @brief Pow Operator Variadic
     /// @param p is the power's degree
     /// @return Value of the ratio at power p (the result is a ratio)
     template <typename ... Args>
     Ratio ratioPow(const int p, const Args ...args) const;
+
+    Ratio ratioPow(const Ratio& p) const;
 
     //SQRT Operator
     /// @brief SQRT Operator

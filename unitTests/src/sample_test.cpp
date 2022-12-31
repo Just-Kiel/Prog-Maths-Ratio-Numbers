@@ -282,6 +282,16 @@ TEST(RatioOperator, ratioPow){
     Ratio zero = Ratio();
     Ratio r6 = zero.ratioPow(2);
     ASSERT_EQ(r6 == zero, true);
+
+
+
+    // test for ratio exponents
+
+    Ratio r10(1, 2);
+    Ratio r8(1, 2);
+
+    Ratio r9 = r10.ratioPow(r8);
+    ASSERT_NEAR(convertRatioToReal<float>(r9), 0.7, 0.01);
 }
 
 //sqrt test

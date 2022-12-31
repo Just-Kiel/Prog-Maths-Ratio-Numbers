@@ -1,7 +1,5 @@
 #include "../include/Ratio.hpp"
 
-#include <numeric>
-
 Ratio::Ratio(const int numerator, const unsigned int denominator) : m_numerator(numerator), m_denominator(denominator) {
     if(denominator == 0)
         throw std::logic_error("Ratio::Ratio(numerator, denominator): invalid denominator, can't be 0");
@@ -116,7 +114,7 @@ Ratio Ratio::operator/(const Ratio &r) const
 }
 
 //Pow Operator
-Ratio Ratio::ratioPow(const int p) const
+Ratio Ratio::ratioPow(const int& p) const
 {
     Ratio newRatio;
     if(p>=0){
@@ -130,6 +128,21 @@ Ratio Ratio::ratioPow(const int p) const
     // Check PGCD = 1 and convert if needed
     newRatio.convertToIrreducible(newRatio.getPGCD());
     return newRatio;
+}
+
+Ratio Ratio::ratioPow(const Ratio& p) const{
+    int entirePart = p.getEntirePart();
+
+    Ratio result(*this);
+    
+    if(entirePart != 0) result = this->ratioPow(entirePart);
+
+    float decimal = convertRatioToReal<float>(p) - entirePart;
+
+     
+    result = convertRealToRatio<float>(std::powf(convertRatioToReal<float>(result),decimal));
+
+    return result;
 }
 
 //SQRT Operator
