@@ -2,6 +2,8 @@
 #include <iostream>
 #include "Ratio.hpp"
 
+using namespace IMAC;
+
 // Main program with our functions and operators use cases
 int main(int argc, char const *argv[])
 {
@@ -58,6 +60,8 @@ int main(int argc, char const *argv[])
     std::cout<<"Power : ("<<r1<<")^"<<2<<" = "<<r1.ratioPow(2)<<std::endl;
     // also possible to do several pow chained
     std::cout<<"Several Powers : (("<<r1<<")^2)^2 = "<<r1.ratioPow(2,2)<<std::endl;
+    // also possible with ratio
+    std::cout<<"Power with ratio exponent : ("<<r1<<")^1/2 = "<<r1.ratioPow(Ratio(1, 2))<<std::endl;
 
     //How to use the SQRT function ?
     std::cout<<"Squared Root of ("<<r3<<") = "<<r3.ratioSqrt()<<std::endl;

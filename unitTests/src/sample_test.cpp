@@ -10,6 +10,7 @@
 #include <cstdlib>
 
 #include "Ratio.hpp"
+using namespace IMAC;
 
 /////////////////////////////////////////////////////
 // constructors

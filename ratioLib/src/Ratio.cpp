@@ -1,4 +1,5 @@
 #include "../include/Ratio.hpp"
+using namespace IMAC;
 
 Ratio::Ratio(const int numerator, const unsigned int denominator) : m_numerator(numerator), m_denominator(denominator) {
     if(denominator == 0)
@@ -159,7 +160,7 @@ Ratio Ratio::ratioSqrt() const
 }
 
 //Display Operator
-std::ostream& operator<<(std::ostream& os, const Ratio &r)
+std::ostream& IMAC::operator<<(std::ostream& os, const Ratio &r)
 {
     os << r.m_numerator << '/' << r.m_denominator << " or real form is " << convertRatioToReal<double>(r);
     return os;
@@ -202,35 +203,35 @@ Ratio& Ratio::operator/=(const Ratio &r){
     return *(this);
 }
 
-bool operator== (const Ratio& r1, const Ratio& r2){
+bool IMAC::operator== (const Ratio& r1, const Ratio& r2){
     return (r1.m_numerator == r2.m_numerator) && (r1.m_denominator == r2.m_denominator);
 }
 
-bool operator!= (const Ratio& r1, const Ratio& r2){
+bool IMAC::operator!= (const Ratio& r1, const Ratio& r2){
     return (r1.m_numerator != r2.m_numerator) || (r1.m_denominator != r2.m_denominator);
 }
 
-bool operator< (const Ratio& r1, const Ratio& r2){
+bool IMAC::operator< (const Ratio& r1, const Ratio& r2){
     // no need to compare denominators because by multiplying they are the same
     return (r1.m_numerator*static_cast<int>(r2.m_denominator) < static_cast<int>(r1.m_denominator)*r2.m_numerator);
 }
 
-bool operator> (const Ratio& r1, const Ratio& r2){
+bool IMAC::operator> (const Ratio& r1, const Ratio& r2){
     return (r2 < r1);
 }
 
-bool operator<= (const Ratio& r1, const Ratio& r2){
+bool IMAC::operator<= (const Ratio& r1, const Ratio& r2){
     return !(r1 > r2);
 }
 
-bool operator>= (const Ratio& r1, const Ratio& r2){
+bool IMAC::operator>= (const Ratio& r1, const Ratio& r2){
     return !(r1<r2);
 }
 
 
 
 // Trigonometry Operations
-Ratio cos(const Ratio& ratio){
+Ratio IMAC::cos(const Ratio& ratio){
     // is approximate
     float realRatio = convertRatioToReal<float>(ratio);
 
@@ -239,7 +240,7 @@ Ratio cos(const Ratio& ratio){
     return convertRealToRatio<float>(cosValue);
 }
 
-Ratio sin(const Ratio& ratio){
+Ratio IMAC::sin(const Ratio& ratio){
     // is approximate
     float realRatio = convertRatioToReal<float>(ratio);
 
@@ -248,15 +249,15 @@ Ratio sin(const Ratio& ratio){
     return convertRealToRatio<float>(sinValue);
 }
 
-Ratio tan(const Ratio& ratio){
+Ratio IMAC::tan(const Ratio& ratio){
     return sin(ratio)/cos(ratio);
 }
 
 /// Exp and log
-Ratio exp(const Ratio& ratio){
+Ratio IMAC::exp(const Ratio& ratio){
     return exp(convertRatioToReal<float>(ratio));
 }
 
-Ratio log(const Ratio& ratio){
+Ratio IMAC::log(const Ratio& ratio){
     return log(convertRatioToReal<float>(ratio));
 }
